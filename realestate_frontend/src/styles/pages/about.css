@@ -1,10 +1,98 @@
-.about-page {
-  padding: 20px;
+/* ============================================================
+   ABOUT PAGE — Matches Your Dark Projects Page UI
+   Supports Light + Dark Mode using color-theme="light"
+============================================================ */
+
+/* ------------------ THEME VARIABLES ------------------ */
+
+/* Dark Theme (default) */
+:root {
+  --about-bg: #06121f;           /* same tone as projects page */
+  --about-card-bg: #0f2235;      /* same as project card */
+  --about-border: #13304a;
+  --about-text-main: #ffffff;
+  --about-text-sub: #c8d1dc;
+  --about-heading: #4dabff;      /* soft blue heading */
+  --about-shadow: rgba(0, 0, 0, 0.45);
 }
 
+/* Light Theme */
+:root[color-theme="light"] {
+  --about-bg: #f2f5f9;
+  --about-card-bg: #ffffff;
+  --about-border: #d4dce6;
+  --about-text-main: #0c1a2a;
+  --about-text-sub: #516173;
+  --about-heading: #0033a0;
+  --about-shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------ PAGE WRAPPER ------------------ */
+.about-container {
+  width: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  padding: 80px 20px;
+
+  display: flex;
+  justify-content: center;
+
+  background: var(--about-bg);
+  transition: background 0.35s ease;
+}
+
+/* ------------------ CARD BOX ------------------ */
 .about-box {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px #00000010;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px;
+
+  background: var(--about-card-bg);
+  border: 1px solid var(--about-border);
+  border-radius: 20px;
+
+  box-shadow: 0 8px 28px var(--about-shadow);
+  backdrop-filter: blur(12px);
+
+  transition: all 0.35s ease;
+}
+
+/* ------------------ TITLE ------------------ */
+.about-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--about-heading);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+
+  transition: color 0.3s ease;
+}
+
+/* ------------------ PARAGRAPHS ------------------ */
+.about-text {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--about-text-sub);
+  margin-bottom: 16px;
+
+  transition: color 0.3s ease;
+}
+
+.about-text strong {
+  color: var(--about-text-main);
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 600px) {
+  .about-box {
+    padding: 26px;
+  }
+
+  .about-title {
+    font-size: 1.7rem;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+  }
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://hiltonbackend.onrender.com";
 
 const api = axios.create({
   baseURL: BASE,
