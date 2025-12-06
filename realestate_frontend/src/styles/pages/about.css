@@ -1,0 +1,10 @@
+.about-page {
+  padding: 20px;
+}
+
+.about-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px #00000010;
+}

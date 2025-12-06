@@ -1,0 +1,73 @@
+
+/* ======================================================
+   ADMIN LAYOUT – MAIN WRAPPER
+====================================================== */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0f1117;
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+/* Main content area */
+.admin-content {
+  flex: 1;
+  padding: 30px 40px;
+  background: #11131b;
+  overflow-y: auto;
+}
+/* MAIN LAYOUT */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0f1117;
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+/* FIXED SIDEBAR SPACE */
+.admin-content {
+  flex: 1;
+  padding: 30px 40px;
+
+  margin-left: 250px;  /* ⭐ Space for fixed sidebar */
+  background: #11131b;
+
+  height: 100vh;
+  overflow-y: auto;     /* Main content scrolls */
+}
+.admin-sidebar {
+  position: fixed;
+  width: 240px;
+  height: 100vh;
+  background: #111827;
+  color: white;
+  padding: 25px 20px;
+  border-right: 1px solid #1f2937;
+}
+
+/* Content shifts right */
+.admin-content {
+  margin-left: 240px;
+  padding: 30px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: absolute;
+    width: 200px;
+    transform: translateX(-100%);
+    transition: 0.3s;
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-content {
+    margin-left: 0;
+  }
+}

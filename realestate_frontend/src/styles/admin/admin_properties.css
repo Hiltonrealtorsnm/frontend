@@ -1,0 +1,278 @@
+/* ==========================================================
+   PAGE WRAPPER
+========================================================== */
+.admin-properties-container {
+  padding: 25px;
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+.admin-properties-container h1 {
+  margin-bottom: 18px;
+  color: white;
+  font-size: 1.8rem;
+}
+
+
+/* ==========================================================
+   FILTER BAR
+========================================================== */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+
+  background: #1f1f26;
+  padding: 14px;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  border: 1px solid #2d2f36;
+  background: #26272e;
+  color: #e5e7eb;
+
+  transition: 0.2s;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.35);
+  outline: none;
+}
+
+.filter-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.filter-btn.apply {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.filter-btn.apply:hover {
+  background: #2563eb;
+}
+
+.filter-btn.reset {
+  background: #374151;
+  color: #fff;
+}
+
+.filter-btn.reset:hover {
+  background: #4b5563;
+}
+
+.filter-btn.export {
+  background: #10b981;
+  color: #fff;
+}
+
+.filter-btn.export:hover {
+  background: #059669;
+}
+
+
+/* ==========================================================
+   TABLE WRAPPER
+========================================================== */
+.table-wrap {
+  background: #1f1f26;
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 20px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.40);
+}
+
+.table-loading,
+.table-empty {
+  text-align: center;
+  padding: 30px;
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+
+/* ==========================================================
+   TABLE STYLING
+========================================================== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* ⭐ FINAL DARK BLUE HEADER */
+.admin-table thead {
+  background: #1e293b;
+  border-bottom: 2px solid #334155;
+}
+
+.admin-table th {
+  padding: 12px;
+  text-align: left;
+  color: #2b3542;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+
+  transition: 0.25s;
+  background: transparent;
+}
+
+.admin-table th:hover {
+  background: #24354d;
+}
+
+.admin-table td {
+  padding: 12px;
+  color: #e5e7eb;
+  border-bottom: 1px solid #2c2d33;
+  font-size: 0.95rem;
+
+  transition: 0.25s;
+}
+
+
+/* ==========================================================
+   ROW HOVER — highlight + LEFT BLUE BORDER
+========================================================== */
+.admin-table tbody tr {
+  transition: 0.22s ease;
+  border-left: 4px solid transparent;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.10);
+  border-left: 4px solid #3b82f6;
+  transform: translateX(2px);
+}
+
+
+/* ==========================================================
+   STATUS BADGES
+========================================================== */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-approved {
+  background: #10b981;
+}
+
+.status-pending {
+  background: #f59e0b;
+}
+
+.status-rejected {
+  background: #ef4444;
+}
+
+
+/* ==========================================================
+   ACTION BUTTONS
+========================================================== */
+.action-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  margin-right: 6px;
+
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-approve {
+  background: #10b981;
+}
+
+.btn-approve:hover {
+  background: #059669;
+}
+
+.btn-reject {
+  background: #f43f5e;
+}
+
+.btn-reject:hover {
+  background: #e11d48;
+}
+
+.btn-delete {
+  background: #6b7280;
+}
+
+.btn-delete:hover {
+  background: #4b5563;
+}
+
+
+/* ==========================================================
+   LINKS
+========================================================== */
+.admin-view-link {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-view-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================
+   RESPONSIVE TABLE (Mobile)
+========================================================== */
+@media (max-width: 850px) {
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tr {
+    display: block;
+    margin-bottom: 12px;
+    background: #1e293b;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .admin-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 4px;
+    border-bottom: 1px solid #334155;
+  }
+
+  .admin-table td:last-child {
+    border-bottom: none;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    color: #94a3b8;
+    font-weight: 600;
+  }
+}

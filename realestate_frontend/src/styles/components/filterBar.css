@@ -1,0 +1,204 @@
+/* ===================================================================
+   FILTER BAR — PREMIUM GLASS PANEL (FINAL FIXED VERSION)
+   With readable text, reduced blur, 4-row layout, dual columns
+=================================================================== */
+
+.filter-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 5000;
+}
+
+/* ==========================================================
+   FILTER BUTTON (Login-style)
+========================================================== */
+.filter-btn {
+  padding: 10px 22px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+  transition: 0.32s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.13);
+}
+
+/* Light theme */
+:root[color-theme="light"] .filter-btn {
+  background: linear-gradient(120deg, #2563eb, #3b82f6);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
+}
+
+/* ==========================================================
+   FILTER POPUP (Readable Glass)
+========================================================== */
+.filter-box {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  width: 360px;
+
+  background: rgba(15, 23, 42, 0.78);  /* ⭐ Much darker for readability */
+  border: 1px solid rgba(255,255,255,0.10);
+
+  border-radius: 20px;
+  padding: 22px;
+
+  backdrop-filter: blur(12px); /* ⭐ Reduced blur */
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 34px rgba(0,0,0,0.45);
+  animation: fadeSlide 0.25s ease;
+
+  z-index: 99999;
+}
+
+:root[color-theme="light"] .filter-box {
+  background: rgba(255,255,255,0.85); /* Light readable panel */
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Title */
+.filter-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+/* ==========================================================
+   INPUT ITEMS (Glassy yet clean)
+========================================================== */
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 14px;
+  margin-bottom: 14px;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+
+  transition: 0.25s ease;
+}
+
+:root[color-theme="light"] .filter-item {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.filter-icon {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.filter-item input,
+.filter-item select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.filter-item option {
+  color: black;
+}
+
+/* ==========================================================
+   ⭐ ROW LAYOUTS (Your requested design)
+========================================================== */
+
+/* Two-column rows */
+.filter-row-2 {
+  display: flex;
+  gap: 14px;
+}
+
+/* Children flex equally */
+.filter-row-2 > .filter-item {
+  flex: 1;
+  margin-bottom: 14px;
+}
+
+/* ==========================================================
+   ACTION BUTTONS (Row)
+========================================================== */
+.filter-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.filter-apply-btn,
+.filter-reset-btn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  transition: 0.25s ease;
+}
+
+.filter-apply-btn {
+  background: var(--brand-gradient);
+  color: white;
+  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+}
+
+.filter-reset-btn {
+  background: rgba(255, 80, 80, 0.25);
+  color: #ffb6b6;
+}
+
+.filter-apply-btn:hover,
+.filter-reset-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Light theme reset button */
+:root[color-theme="light"] .filter-reset-btn {
+  background: rgba(255,60,60,0.15);
+  color: #c54848;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 600px) {
+  .filter-box {
+    right: 0;
+    width: 92vw;
+  }
+}

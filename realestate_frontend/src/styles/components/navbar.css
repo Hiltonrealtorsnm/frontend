@@ -1,0 +1,278 @@
+/* ============================================================
+   PREMIUM GLASSMORPHIC NAVBAR — FINAL FIXED VERSION
+   Includes: gap fix, theme support, mobile menu, animations
+============================================================ */
+
+/* Define navbar height globally */
+:root {
+  --nav-height: 80px;
+}
+
+/* ---------------- BASE NAVBAR ---------------- */
+.navbar {
+  width: 100%;
+  height: var(--nav-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 20px !important;
+  margin: 0 !important;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: var(--nav-bg-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  border-bottom: 1px solid var(--nav-border);
+  color: var(--nav-text);
+
+  z-index: 2000;
+  transition: 0.3s ease;
+}
+
+.navbar-inner {
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------------- LOGO ---------------- */
+.nav-logo {
+  color: var(--nav-text);
+  font-size: 1.65rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  transition: 0.3s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ---------------- NAV LINKS ---------------- */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--nav-link);
+  font-size: 0.97rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+/* Underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0%;
+  height: 2px;
+  border-radius: 2px;
+
+  background: var(--nav-link-hover);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--nav-link-hover);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ---------------- NAV ACTIONS ---------------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ---------------- LOGIN BUTTON ---------------- */
+.nav-login-btn {
+  padding: 10px 22px;
+  border-radius: 14px;
+  border: none;
+
+  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+  color: white;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+  transition: 0.35s ease;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.nav-login-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+  box-shadow: 0 6px 28px rgba(21,198,177,0.55);
+}
+
+/* LIGHT THEME OVERRIDE */
+:root[color-theme="light"] .nav-login-btn {
+  background: linear-gradient(120deg, #2563eb, #3b82f6);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
+}
+
+:root[color-theme="light"] .nav-login-btn:hover {
+  box-shadow: 0 6px 26px rgba(59,130,246,0.5);
+}
+
+/* ---------------- THEME TOGGLE ---------------- */
+.theme-toggle {
+  width: 48px;
+  height: 26px;
+  border-radius: 20px;
+  border: 2px solid var(--toggle-border);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--toggle-bg);
+  padding: 0 6px;
+
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.theme-toggle .sun,
+.theme-toggle .moon {
+  opacity: 0.5;
+  transition: 0.25s ease;
+}
+
+:root[color-theme="light"] .sun { opacity: 1; }
+:root[color-theme="light"] .moon { opacity: 0.3; }
+
+:root[color-theme="dark"] .moon { opacity: 1; }
+:root[color-theme="dark"] .sun { opacity: 0.3; }
+
+/* ---------------- HEART ICON ---------------- */
+.icon-btn {
+  position: relative;
+  font-size: 1.35rem;
+
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+
+  color: var(--nav-link);
+  cursor: pointer;
+
+  padding: 8px 12px;
+
+  backdrop-filter: blur(12px);
+  transition: 0.28s ease-in-out;
+}
+
+.icon-btn:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(21,198,177,0.32);
+}
+
+.icon-btn.active {
+  color: var(--heart);
+  transform: scale(1.15);
+  text-shadow: 0 0 10px rgba(255,75,105,0.6);
+}
+
+/* Wishlist badge */
+.wish-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  background: var(--heart);
+  color: white;
+
+  padding: 2px 7px;
+  border-radius: 10px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  box-shadow: 0 4px 12px rgba(255,75,105,0.45);
+}
+
+/* ---------------- MOBILE MENU ---------------- */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--nav-text);
+}
+
+@media (max-width: 880px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+.mobile-drawer {
+  position: fixed;
+  right: -100%;
+  top: 0;
+
+  width: 260px;
+  height: 100vh;
+  padding: 26px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: var(--drawer-bg-glass);
+  color: var(--drawer-text);
+
+  backdrop-filter: blur(16px) saturate(180%);
+  border-left: 1px solid var(--nav-border);
+
+  box-shadow: -4px 0 26px rgba(0,0,0,0.45);
+  transition: 0.35s ease;
+  z-index: 3000;
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+.drawer-close-btn {
+  align-self: flex-end;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--drawer-text);
+}
+
+.drawer-close-btn:hover {
+  transform: rotate(90deg);
+  color: var(--nav-link-hover);
+}

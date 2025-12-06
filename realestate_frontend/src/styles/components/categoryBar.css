@@ -1,0 +1,137 @@
+/* =====================================================
+   CATEGORY BAR — THEME READY (Dark Glass + Light Glass)
+===================================================== */
+
+/* DEFAULT → DARK GLASS STYLE */
+.category-bar {
+  margin: 30px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+  max-width: 520px;
+
+  background: var(--category-bg);
+  border: 1.5px solid var(--category-border);
+  border-radius: 16px;
+
+  padding: 12px 16px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: var(--category-shadow);
+  transition: 0.25s ease;
+}
+
+/* BUTTON STYLE */
+.category-bar button {
+  flex: 1;
+  padding: 12px 0;
+
+  background: var(--category-btn-bg);
+  border: 1.4px solid var(--category-btn-border);
+  border-radius: 12px;
+
+  color: var(--category-btn-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: 0.25s ease;
+
+  box-shadow: var(--category-btn-shadow);
+}
+
+/* HOVER EFFECT */
+.category-bar button:hover {
+  background: var(--category-btn-hover-bg);
+  border-color: var(--category-btn-hover-border);
+
+  box-shadow: var(--category-btn-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* ACTIVE TAB */
+.category-bar button.active {
+  background: var(--category-btn-active-bg);
+  border-color: var(--category-btn-active-border);
+  box-shadow: var(--category-btn-active-shadow);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .category-bar {
+    max-width: 92%;
+    padding: 10px 12px;
+  }
+
+  .category-bar button {
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* =====================================================
+   DARK THEME VARIABLES
+===================================================== */
+
+:root[color-theme="dark"] {
+  --category-bg: rgba(8, 24, 58, 0.65);  /* Blue Glass */
+  --category-border: rgba(120,160,255,0.22);
+  --category-shadow:
+    0 6px 26px rgba(0,0,0,0.55),
+    inset 0 0 8px rgba(0,40,100,0.35);
+
+  --category-btn-bg: rgba(255,255,255,0.10);
+  --category-btn-border: rgba(255,255,255,0.22);
+  --category-btn-text: #ffffff;
+  --category-btn-shadow:
+    inset 0 0 6px rgba(0,0,0,0.35),
+    inset 0 0 4px rgba(100,140,255,0.25);
+
+  --category-btn-hover-bg: rgba(120,170,255,0.22);
+  --category-btn-hover-border: rgba(120,170,255,0.75);
+  --category-btn-hover-shadow:
+    0 0 16px rgba(120,170,255,0.65),
+    0 0 26px rgba(120,170,255,0.45),
+    inset 0 0 8px rgba(120,170,255,0.35);
+
+  --category-btn-active-bg: rgba(120,170,255,0.32);
+  --category-btn-active-border: rgba(120,170,255,1);
+  --category-btn-active-shadow:
+    0 0 18px rgba(120,170,255,0.85),
+    0 0 28px rgba(120,170,255,0.55);
+}
+
+/* =====================================================
+   LIGHT THEME VARIABLES (Clean White Glass)
+===================================================== */
+
+:root[color-theme="light"] {
+  --category-bg: rgba(255, 255, 255, 0.65); /* white glass */
+  --category-border: rgba(0,0,0,0.10);
+  --category-shadow:
+    0 4px 18px rgba(0,0,0,0.08);
+
+  --category-btn-bg: rgba(255,255,255,0.70);
+  --category-btn-border: rgba(0,0,0,0.12);
+  --category-btn-text: #0f172a;
+
+  --category-btn-shadow:
+    inset 0 0 4px rgba(0,0,0,0.05);
+
+  --category-btn-hover-bg: rgba(225,235,255,0.90);
+  --category-btn-hover-border: #3b82f6;
+  --category-btn-hover-shadow:
+    0 2px 12px rgba(59,130,246,0.35);
+
+  --category-btn-active-bg: rgba(205,225,255,1);
+  --category-btn-active-border: #2563eb;
+  --category-btn-active-shadow:
+    0 2px 14px rgba(37,99,235,0.45);
+}

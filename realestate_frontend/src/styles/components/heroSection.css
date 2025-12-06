@@ -1,0 +1,139 @@
+/* =====================================================
+   HERO SECTION — FINAL FIXED VERSION (Category Visible)
+===================================================== */
+
+.hero-section {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  overflow: visible !important;  /* 🔥 allow bar to overflow */
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+}
+
+/* Background Image */
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Theme Overlay */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+}
+
+/* =====================================================
+   HERO TEXT + SEARCH BAR
+===================================================== */
+.hero-content {
+  position: absolute;
+  left: 60px;
+  bottom: 150px;
+  z-index: 5;
+
+  max-width: 600px;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.55);
+}
+
+.hero-content h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+/* Search bar */
+.hero-search {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+
+  width: 450px;
+  padding: 10px;
+
+  background: rgba(255,255,255,0.18);
+  border: 1.4px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.hero-search input {
+  flex: 1;
+  padding: 12px 14px;
+
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.33);
+  border-radius: 10px;
+  color: #fff;
+
+  outline: none;
+}
+
+.hero-search button {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(90deg, #11c78c, #18d3b0);
+  color: white;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* =====================================================
+   CATEGORY BAR (FLOATING FULLY VISIBLE)
+===================================================== */
+
+.hero-bottom-category {
+  position: absolute;
+  bottom: -30px;              /* FLOAT */
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* Make bar slightly larger for premium feel */
+.hero-bottom-category .category-bar {
+  transform: scale(1.06);
+}
+
+/* =====================================================
+   RESPONSIVE FIXES
+===================================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 380px;
+  }
+
+  .hero-content {
+    bottom: 160px;
+    left: 22px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-search {
+    width: 90%;
+  }
+
+  .hero-bottom-category {
+    bottom: -22px;
+  }
+
+  .hero-bottom-category .category-bar {
+    transform: scale(1);
+  }
+}

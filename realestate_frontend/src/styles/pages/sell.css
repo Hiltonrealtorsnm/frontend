@@ -1,0 +1,296 @@
+/* =======================================================
+   SELL PAGE — DARK + LIGHT THEME (Final Polished Version)
+======================================================= */
+
+/* --------------------- DARK THEME DEFAULT --------------------- */
+:root {
+  --sell-bg: #0d0f15;
+  --sell-surface: #1a1d22;
+  --sell-surface-2: #252932;
+
+  --sell-border: rgba(255,255,255,0.15);
+  --sell-border-soft: rgba(255,255,255,0.08);
+
+  --sell-text-main: #eef0f4;
+  --sell-text-muted: #9da4b5;
+
+  --sell-section-label: #b4c3ff;
+
+  --sell-input-bg: #252932;
+  --sell-input-border: rgba(255,255,255,0.22);
+  --sell-input-placeholder: #b8bdc9;
+
+  --sell-shadow: 0px 10px 25px rgba(0,0,0,0.55);
+  --sell-shadow-light: 0px 4px 12px rgba(60,115,255,0.45);
+
+  --sell-submit-bg: #3c73ff;
+
+  --sell-remove-img-bg: rgba(255, 60, 60, 0.85);
+}
+
+/* --------------------- LIGHT THEME OVERRIDE --------------------- */
+:root[color-theme="light"] {
+  --sell-bg: #f2f5fb;
+  --sell-surface: #ffffff;
+  --sell-surface-2: #f7f9fc;
+
+  --sell-border: rgba(0,0,0,0.25);
+  --sell-border-soft: rgba(0,0,0,0.08);
+
+  --sell-text-main: #1d232b;
+  --sell-text-muted: #5c6472;
+
+  --sell-section-label: #2b46d8;
+
+  --sell-input-bg: #ffffff;
+  --sell-input-border: rgba(0,0,0,0.32);
+  --sell-input-placeholder: #7a8594;
+
+  --sell-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+  --sell-shadow-light: 0px 4px 12px rgba(59,130,246,0.25);
+
+  --sell-submit-bg: #2563eb;
+
+  --sell-remove-img-bg: rgba(255, 45, 45, 0.92);
+}
+
+/* =======================================================
+   PAGE WRAPPER (FULL-SCREEN BACKGROUND FIXED)
+======================================================= */
+body[color-theme="dark"] {
+  background: var(--sell-bg) !important;
+}
+body[color-theme="light"] {
+  background: var(--sell-bg) !important;
+}
+.sell-wrapper {
+  width: 100%;
+  padding: calc(var(--nav-height) + 40px) 20px;
+
+  /* ⭐ background now adapts to light/dark theme */
+  background-color: var(--sell-bg);
+
+  color: var(--sell-text-main);
+  font-family: "Inter", sans-serif;
+  transition: 0.3s ease;
+}
+
+/* Center content only, not background */
+.sell-container {
+  max-width: 1150px;
+  margin: auto;
+}
+
+/* Title */
+.sell-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+
+  /* ⭐ dynamic text color */
+  color: var(--sell-text-main);
+}
+
+
+/* =======================================================
+   FORM CARD
+======================================================= */
+.sell-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+
+  background: var(--sell-surface);
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid var(--sell-border-soft);
+
+  box-shadow: var(--sell-shadow);
+}
+
+.sell-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sell-section-label);
+}
+
+.section-label.small {
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+/* =======================================================
+   INPUTS
+======================================================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  color: var(--sell-text-muted);
+}
+
+input,
+select,
+textarea {
+  background: var(--sell-input-bg) !important;
+  border: 2px solid var(--sell-input-border) !important;
+  border-radius: 12px;
+  padding: 11px 13px;
+
+  color: var(--sell-text-main) !important;
+  font-size: 1rem;
+  transition: 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--sell-input-placeholder) !important;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--sell-section-label) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--sell-submit-bg) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35) !important;
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* =======================================================
+   ROWS
+======================================================= */
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+.half { flex: 1; }
+
+.address-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* =======================================================
+   IMAGE UPLOAD
+======================================================= */
+.file-input {
+  margin-top: 6px;
+  padding: 12px;
+  background: var(--sell-surface-2);
+  border: 1px solid var(--sell-border);
+  border-radius: 12px;
+  color: var(--sell-text-muted);
+}
+
+.image-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 95px);
+  gap: 14px;
+}
+
+.img-box {
+  width: 95px;
+  height: 85px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--sell-surface-2);
+  border: 1px solid var(--sell-border);
+  position: relative;
+  cursor: grab;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-img {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--sell-remove-img-bg);
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =======================================================
+   SUBMIT BUTTON
+======================================================= */
+.submit-row {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 14px;
+}
+
+.submit-btn {
+  padding: 14px 26px;
+  background: var(--sell-submit-bg);
+  border: none;
+
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--sell-shadow-light);
+  transition: 0.25s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media(max-width: 900px) {
+  .sell-card {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-row {
+    justify-content: center;
+  }
+
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+}

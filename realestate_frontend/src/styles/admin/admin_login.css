@@ -1,0 +1,196 @@
+/* =====================================================
+   Admin Login - Full Dark Glass UI
+===================================================== */
+
+/* Page Wrapper */
+.admin-login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0b1220, #101827, #05070a);
+  font-family: "Inter", sans-serif;
+  padding: 20px;
+}
+
+/* Glass Login Card */
+.admin-login-box {
+  width: 360px;
+  padding: 32px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+  text-align: center;
+}
+
+/* Title */
+.admin-login-box h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 26px;
+  color: #ffffff;
+}
+
+/* Form Groups */
+.form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+/* Input Fields */
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+
+  color: #f1f5f9;
+  font-size: 1rem;
+  outline: none;
+
+  transition: 0.25s ease;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.45);
+}
+
+/* Login Button */
+.btn-admin-login {
+  width: 100%;
+  padding: 14px 18px;
+
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border: none;
+  border-radius: 12px;
+
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+
+  box-shadow: 0 6px 18px rgba(59,130,246,0.45);
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.btn-admin-login:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #60a5fa;
+  cursor: pointer;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   FORGOT PASSWORD POPUP
+===================================================== */
+
+.forgot-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: rgba(255,255,255,0.95);
+  padding: 25px;
+  width: 360px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Popup Header with Close Button */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.popup-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1e293b;
+}
+
+/* Close Button (Top Right) */
+.close-popup {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #444;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.close-popup:hover {
+  color: #ef4444;
+  transform: scale(1.2);
+}
+
+/* Popup Input Fields */
+.popup-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+/* Resend OTP Link */
+.resend-otp {
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+.resend-otp:hover {
+  text-decoration: underline;
+}

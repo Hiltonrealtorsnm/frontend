@@ -1,0 +1,224 @@
+/* ------------------------------
+   PAGE CONTAINER
+------------------------------ */
+.admin-project-container {
+  padding: 25px;
+  background: #f7f7f9;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+/* BACK BUTTON */
+.admin-back-btn {
+  background: #e6e6e6;
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.admin-back-btn:hover {
+  background: #d4d4d4;
+}
+
+/* ------------------------------
+   HEADER ROW
+------------------------------ */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header-row h1 {
+  margin: 0;
+}
+
+/* EDIT BUTTON */
+.btn-edit {
+  padding: 10px 15px;
+  background: #0d6efd;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-edit:hover {
+  background: #0a58ca;
+}
+
+/* ------------------------------
+   PROJECT DETAILS BOX
+------------------------------ */
+.pd-box {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.12);
+  margin-bottom: 25px;
+}
+
+.pd-box h2 {
+  margin-top: 0;
+}
+
+.pd-box p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+/* ------------------------------
+   STATUS BADGES
+------------------------------ */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.status-UPCOMING {
+  background: #6c757d;
+}
+
+.status-UNDER_CONSTRUCTION {
+  background: #ff8c00;
+}
+
+.status-READY {
+  background: #28a745;
+}
+
+.status-COMPLETED {
+  background: #007bff;
+}
+
+/* ------------------------------
+   STATUS BUTTONS
+------------------------------ */
+.status-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.action-btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-ready {
+  background: #28a745;
+}
+
+.btn-ready:hover {
+  background: #218838;
+}
+
+.btn-construction {
+  background: #ff8c00;
+}
+
+.btn-construction:hover {
+  background: #e67a00;
+}
+
+.btn-upcoming {
+  background: #6c757d;
+}
+
+.btn-upcoming:hover {
+  background: #5a6268;
+}
+
+.btn-completed {
+  background: #007bff;
+}
+
+.btn-completed:hover {
+  background: #0069d9;
+}
+
+.btn-delete {
+  background: #dc3545;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+/* ------------------------------
+   IMAGE GALLERY
+------------------------------ */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.img-wrapper {
+  position: relative;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.img-wrapper img:hover {
+  transform: scale(1.03);
+}
+
+/* DELETE IMAGE BUTTON */
+.delete-img-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.delete-img-btn:hover {
+  background: #b71c1c;
+}
+
+/* REPLACE INPUT */
+.replace-input {
+  margin-top: 6px;
+  width: 100%;
+  font-size: 13px;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media(max-width: 850px) {
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

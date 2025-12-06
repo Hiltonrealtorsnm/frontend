@@ -1,0 +1,316 @@
+/* ---------------------------------------
+   Dashboard Page Container
+---------------------------------------- */
+.admin-dash-container {
+  padding: 25px;
+  color: #e9ecf2;
+  animation: fadeIn 0.4s ease;
+}
+
+.admin-dash-container h1 {
+  font-size: 28px;
+  margin-bottom: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ---------------------------------------
+   Stat Cards Grid
+---------------------------------------- */
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-top: 15px;
+}
+
+/* ---------------------------------------
+   Neumorphic Card Style
+---------------------------------------- */
+.dash-card {
+  padding: 28px 20px;
+  border-radius: 18px;
+
+  background: #1f2127;
+  box-shadow: 
+    10px 10px 25px rgba(0, 0, 0, 0.35),
+    -6px -6px 16px rgba(255, 255, 255, 0.05);
+
+  text-align: center;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    12px 12px 30px rgba(0, 0, 0, 0.45),
+    -6px -6px 20px rgba(255, 255, 255, 0.07);
+}
+
+.dash-card h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.dash-card p {
+  font-size: 0.95rem;
+  color: #b4b8c4;
+}
+
+/* ---------------------------------------
+   Color Accents Per Card
+---------------------------------------- */
+.dash-card.total {
+  border-left: 4px solid #4dc9ff;
+}
+
+.dash-card.pending {
+  border-left: 4px solid #facc15;
+}
+
+.dash-card.approved {
+  border-left: 4px solid #4ade80;
+}
+
+.dash-card.rejected {
+  border-left: 4px solid #ef4444;
+}
+
+.dash-card.enquiries {
+  border-left: 4px solid #a855f7;
+}
+
+/* ---------------------------------------
+   Buttons Area
+---------------------------------------- */
+.admin-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Primary button */
+.btn-view {
+  padding: 12px 22px;
+  background: #3c73ff;
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 14px rgba(60, 115, 255, 0.35);
+}
+
+.btn-view:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* Outline button */
+.btn-view.outline {
+  background: transparent;
+  border: 2px solid #3c73ff;
+  color: #3c73ff;
+  box-shadow: none;
+}
+
+.btn-view.outline:hover {
+  background: #3c73ff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------
+   Animations
+---------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------
+   Mobile
+---------------------------------------- */
+@media (max-width: 768px) {
+  .admin-actions {
+    flex-direction: column;
+  }
+  .btn-view {
+    width: 100%;
+  }
+}
+/* Base neumorphic card */
+.dash-card {
+  padding: 28px 20px;
+  border-radius: 18px;
+  background: #1f2127;
+  box-shadow: 
+    10px 10px 25px rgba(0, 0, 0, 0.35),
+    -6px -6px 16px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  transition: 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* BEFORE overlay for hover glow */
+.dash-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.35s ease;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Keep content above the color layer */
+.dash-card * {
+  position: relative;
+  z-index: 2;
+}
+
+/* LEFT border colors */
+.dash-card.total { border-left: 4px solid #4dc9ff; }
+.dash-card.pending { border-left: 4px solid #facc15; }
+.dash-card.approved { border-left: 4px solid #4ade80; }
+.dash-card.rejected { border-left: 4px solid #ef4444; }
+.dash-card.enquiries { border-left: 4px solid #a855f7; }
+
+/* ON HOVER — FILL BACKGROUND COLOR BASED ON CARD TYPE */
+.dash-card.total:hover::before {
+  background: rgba(77, 201, 255, 0.15);
+  opacity: 1;
+}
+
+.dash-card.pending:hover::before {
+  background: rgba(250, 204, 21, 0.18);
+  opacity: 1;
+}
+
+.dash-card.approved:hover::before {
+  background: rgba(74, 222, 128, 0.18);
+  opacity: 1;
+}
+
+.dash-card.rejected:hover::before {
+  background: rgba(239, 68, 68, 0.17);
+  opacity: 1;
+}
+
+.dash-card.enquiries:hover::before {
+  background: rgba(168, 85, 247, 0.18);
+  opacity: 1;
+}
+
+/* Slight lift hover */
+.dash-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    12px 12px 30px rgba(0, 0, 0, 0.45),
+    -6px -6px 20px rgba(255, 255, 255, 0.07);
+}
+/* ----------- CONTAINER ----------- */
+.admin-dash-container {
+  padding: 25px;
+}
+
+.dash-title {
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ----------- GRID ----------- */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+/* ----------- CARD BASE ----------- */
+.dash-card {
+  padding: 22px;
+  border-radius: 14px;
+
+  background: #1f2128;
+  border: 1px solid #2b2d35;
+
+  box-shadow: 6px 6px 16px rgba(0,0,0,0.4),
+              -6px -6px 16px rgba(255,255,255,0.05);
+  transition: 0.25s ease;
+  color: white;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(90,120,255,0.45);
+}
+
+.dash-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.dash-card p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* COLORS */
+.total { border-left: 4px solid #60a5fa; }
+.approved { border-left: 4px solid #22c55e; }
+.pending { border-left: 4px solid #eab308; }
+.rejected { border-left: 4px solid #ef4444; }
+.enquiries { border-left: 4px solid #a855f7; }
+
+/* ----------- BUTTONS ----------- */
+.dash-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+}
+
+.dash-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.dash-btn.primary {
+  background: #3b82f6;
+  border: none;
+  color: white;
+}
+
+.dash-btn.primary:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.dash-btn.ghost {
+  background: transparent;
+  border: 1px solid #4b5563;
+  color: #cbd5e1;
+}
+
+.dash-btn.ghost:hover {
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+/* ----------- RESPONSIVE ----------- */
+@media (max-width: 600px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+}

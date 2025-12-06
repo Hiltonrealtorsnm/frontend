@@ -1,0 +1,198 @@
+/* ==========================================================
+   PROPERTY CARD — Single Image Version
+========================================================== */
+.property-card {
+  background: var(--card-bg, rgba(255,255,255,0.05));
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+
+  border: 1px solid var(--card-border, rgba(255,255,255,0.12));
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+
+  transition: 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.32);
+}
+
+/* THEME COLORS */
+:root[color-theme="light"] {
+  --card-bg: #ffffff;
+  --card-border: rgba(0,0,0,0.1);
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+}
+
+:root[color-theme="dark"] {
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+}
+
+/* ==========================================================
+   TAG WITH RIBBON
+========================================================== */
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  border-radius: 6px 6px 6px 0;
+  color: #fff;
+  z-index: 10;
+}
+
+.tag.sale { background: #f97316; } /* Orange */
+.tag.rent { background: #16a34a; } /* Green */
+
+.tag::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 6px solid currentColor;
+  opacity: 0.7;
+}
+
+/* ==========================================================
+   ONLY ONE IMAGE
+========================================================== */
+.image-wrapper {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+.property-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.property-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.property-location {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* BEDS & BATH */
+.property-meta {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.property-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================
+   PRICE
+========================================================== */
+.property-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--price-color, #3b82f6);
+  margin-top: 8px;
+}
+
+/* RENT DEPOSIT */
+.property-deposit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================
+   FOOTER (VIEW BUTTON + HEART)
+========================================================== */
+.card-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;   /* Move both items to the right */
+  align-items: center;
+  gap: 10px;                   /* Small space between View + Heart */
+  padding-right: 10px;         /* Adjustment for alignment */
+}
+
+
+/* SHORTER VIEW BUTTON */
+.btn-view {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-view:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* HEART BUTTON */
+.heart-btn {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,0.08);
+
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.heart-btn.active {
+  background: rgba(239,68,68,0.25);
+  color: #ef4444;
+  transform: scale(1.15);
+}
+
+.heart-btn:hover {
+  transform: scale(1.1);
+}

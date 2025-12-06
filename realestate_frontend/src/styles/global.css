@@ -1,0 +1,241 @@
+/* ============================================================
+   GLOBAL.CSS — PREMIUM REAL-ESTATE THEME
+   Dark Navy Default  |  Soft Frosted Light Mode
+   Clean, Optimized, No Duplicate Blocks
+============================================================ */
+
+/* ============================================================
+   DARK THEME (DEFAULT)
+============================================================ */
+:root {
+
+  /* Brand */
+  --brand-primary: #15c6b1;
+  --brand-primary-2: #10b4ce;
+  --brand-gradient: linear-gradient(90deg, #15c6b1, #10b4ce);
+
+  /* Background System */
+  --bg-body: #0d1b2a;
+  --bg-surface: #10263d;
+  --bg-card: rgba(255,255,255,0.06);
+
+  /* Text */
+  --text-main: #e6f1ff;
+  --text-muted: #b7c9df;
+  --text-muted-2: #9aa6bd;
+  --text-light: #ffffff;
+
+  /* Shadows / Borders */
+  --border-soft: rgba(255,255,255,0.10);
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.45);
+  --shadow-md: 0 10px 34px rgba(0,0,0,0.65);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 240ms cubic-bezier(.25,.8,.25,1);
+
+  /* Navbar (Glass Dark) */
+  --nav-bg-glass: rgba(13,19,42,0.45);
+  --nav-border: rgba(255,255,255,0.15);
+  --nav-text: #e6f1ff;
+  --nav-link: #dce6ff;
+  --nav-link-hover: #4de3ff;
+
+  --drawer-bg-glass: rgba(15,25,50,0.55);
+  --drawer-text: #eef6ff;
+
+  --toggle-bg: rgba(255,255,255,0.18);
+  --toggle-border: rgba(255,255,255,0.35);
+
+  /* Property Cards */
+  --card-bg: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.12);
+  --card-shadow: var(--shadow-sm);
+
+  --card-hover-border: rgba(90,200,255,0.65);
+  --card-hover-glow1: rgba(90,200,255,0.55);
+  --card-hover-glow2: rgba(90,200,255,0.35);
+
+  --title-text: #f5f9ff;
+  --location-text: #bfd1e4;
+  --meta-text: #d3e8ff;
+  --meta-icon: #7fd8ff;
+
+  --price-text: #92ffdb;
+  --deposit-text: #b5f1d0;
+
+  --img-bg: rgba(255,255,255,0.12);
+
+  /* Search */
+  --searchbox-bg: rgba(255,255,255,0.06);
+  --searchbox-border: rgba(255,255,255,0.18);
+  --search-text: var(--text-main);
+
+  /* Category Bar */
+  --category-bg: rgba(8,24,58,0.65);
+  --category-border: rgba(120,160,255,0.25);
+  --category-btn-bg: rgba(255,255,255,0.12);
+  --category-btn-border: rgba(255,255,255,0.22);
+  --category-btn-text: #ffffff;
+
+  /* Immersive section */
+  --immersive-bg: #10263d;
+
+  /* Page backgrounds */
+  --home-bg: #0d1b2a;
+}
+
+/* ============================================================
+   LIGHT THEME — FINAL (Soft Frosted Premium UI)
+============================================================ */
+:root[color-theme="light"] {
+
+  /* Backgrounds */
+  --bg-body: #eef2f6;
+  --bg-surface: #e6ebf3;
+  --bg-card: rgba(255,255,255,0.88);
+
+  /* Text */
+  --text-main: #162032;
+  --text-muted: #667389;
+  --text-muted-2: #8a94a8;
+  --text-light: #ffffff;
+
+  /* Shadows / Borders */
+  --border-soft: rgba(0,0,0,0.08);
+  --shadow-sm: 0 6px 14px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 24px rgba(0,0,0,0.10);
+
+  /* Primary */
+  --primary: #1e4fc7;
+  --primary-light: #3a6af6;
+
+  /* Navbar Glass */
+  --nav-bg-glass: rgba(245,247,252,0.55);
+  --nav-border: rgba(0,0,0,0.06);
+
+  --nav-text: #162032;
+  --nav-link: #162032;
+  --nav-link-hover: #2447b8;
+
+  --toggle-bg: rgba(90,140,255,0.22);
+  --toggle-border: rgba(90,140,255,0.35);
+
+  /* Drawer */
+  --drawer-bg-glass: rgba(245,247,252,0.75);
+  --drawer-text: #162032;
+
+  /* Hero Overlay */
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(240,244,255,0.10) 0%,
+    rgba(240,244,255,0.20) 45%,
+    rgba(240,244,255,0.35) 100%
+  );
+
+  /* Property Cards */
+  --card-bg: rgba(255,255,255,0.82);
+  --card-border: rgba(0,0,0,0.10);
+  --card-shadow: 0 6px 16px rgba(0,0,0,0.08);
+
+  --title-text: #162032;
+  --location-text: #4e5b70;
+  --meta-text: #425066;
+  --meta-icon: #274cda;
+
+  --price-text: #0d8650;
+  --deposit-text: #32a983;
+
+  /* Search */
+  --searchbox-bg: rgba(255,255,255,0.90);
+  --searchbox-border: rgba(0,0,0,0.12);
+
+  /* Category Bar */
+  --category-bg: rgba(250,252,255,0.72);
+  --category-border: rgba(0,0,0,0.08);
+  --category-btn-bg: rgba(255,255,255,0.90);
+  --category-btn-border: rgba(0,0,0,0.12);
+  --category-btn-text: #162032;
+
+  /* Immersive */
+  --immersive-bg: #e9edf5;
+
+  /* Page Wrapper */
+  --home-bg: #eef2f6;
+}
+
+/* ============================================================
+   BASE RESET + SMOOTH TRANSITIONS
+============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg-body);
+  color: var(--text-main);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* smooth theming */
+* {
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+============================================================ */
+.container { max-width: 1250px; margin: 0 auto; padding: 0 16px; }
+.nav-spacer { height: 72px; }
+
+/* Typography */
+h1,h2,h3,h4 { font-weight: 700; }
+.text-muted { color: var(--text-muted); }
+
+/* Buttons */
+.btn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--brand-gradient);
+  color: #fff;
+}
+.btn-primary:hover { filter: brightness(1.07); }
+
+/* Inputs */
+input {
+  background: var(--searchbox-bg);
+  border: 1px solid var(--searchbox-border);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+}
+
+/* Category Bar */
+.category-bar {
+  background: var(--category-bg);
+  border: 1.5px solid var(--category-border);
+  backdrop-filter: blur(14px);
+}
+
+/* Property Grid */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 26px;
+}
+
+/* Mobile Reduced Motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}

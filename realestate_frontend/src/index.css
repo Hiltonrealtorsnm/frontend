@@ -1,0 +1,72 @@
+/* ============================================
+   PREMIUM GLOBAL UI STYLES FOR REAL ESTATE APP
+   Clean, Modern, Responsive
+============================================ */
+
+/* ---------- Theme Variables ---------- */
+:root {
+  --primary: #0b63c5;
+  --primary-light: #2b82ff;
+  --dark: #0b1220;
+  --card: #ffffff;
+  --muted: #77808b;
+  --border: rgba(0,0,0,0.08);
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.25s ease;
+  --max-width: 1250px;
+
+  --font-heading: "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* NAVBAR HEIGHT — used globally */
+  --nav-height: 72px;
+}
+
+/* ---------- Reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: #f6f9fc;
+  color: var(--dark);
+}
+
+/* =====================================================
+   NAVBAR GLOBAL FIX
+===================================================== */
+
+/* Keep navbar fixed on top */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ❌ REMOVE ALL GLOBAL PAGE SPACING HERE
+   Home.css & Properties.css handle spacing correctly.
+*/
+
+/* REMOVE these — Do NOT add padding here
+.home-wrapper,
+.properties-page,
+.page,
+#root {
+  padding-top: calc(var(--nav-height) + 16px);
+}
+*/
+
+/* Keep nav spacer class (optional use only) */
+.nav-spacer {
+  height: var(--nav-height);
+}

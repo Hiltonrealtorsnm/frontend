@@ -1,0 +1,117 @@
+/* ======================================================
+   SIDEBAR CONTAINER
+====================================================== */
+.admin-sidebar {
+  width: 250px;
+  padding: 30px 20px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-right: 1px solid rgba(255,255,255,0.12);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo */
+.admin-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ======================================================
+   NAVIGATION LINKS
+====================================================== */
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-item {
+  padding: 12px 14px;
+
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  transition: 0.25s ease;
+}
+
+/* Hover */
+.nav-item:hover {
+  background: rgba(59,130,246,0.25);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* Active state */
+.nav-item.active {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.45);
+}
+
+/* ======================================================
+   LOGOUT BUTTON
+====================================================== */
+.admin-logout {
+  margin-top: 20px;
+  padding: 12px 14px;
+
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239,68,68,0.45);
+
+  color: #fca5a5;
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.admin-logout:hover {
+  background: rgba(239,68,68,0.35);
+  color: white;
+  transform: translateY(-2px);
+}
+/* FIXED SIDEBAR */
+.admin-sidebar {
+  width: 250px;               /* ⭐ Fixed width */
+  height: 100vh;              /* ⭐ Full height */
+  position: fixed;            /* ⭐ Stays on the left always */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  padding: 30px 20px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+
+  border-right: 1px solid rgba(255,255,255,0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+}

@@ -1,0 +1,181 @@
+/* ==========================================================
+   PAGE LAYOUT
+========================================================== */
+.enquiry-details-page {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+  font-family: "Inter", sans-serif;
+  color: #e5e7eb;
+
+  flex-wrap: wrap;
+}
+
+/* Shared panel design */
+.panel {
+  flex: 1;
+  min-width: 330px;
+
+  background: rgba(31, 31, 38, 0.85);
+  padding: 22px;
+  border-radius: 14px;
+
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================
+   TITLES
+========================================================== */
+.section-title {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+
+/* ==========================================================
+   DETAIL ITEMS
+========================================================== */
+.detail-item {
+  margin-bottom: 16px;
+}
+
+.detail-item label {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.detail-item p {
+  background: #1e293b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #2c2f36;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.message-box {
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   GRID (Bedrooms / Bathrooms)
+========================================================== */
+.detail-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.detail-grid div {
+  flex: 1;
+}
+
+.detail-grid p {
+  text-align: center;
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   PROPERTY IMAGES
+========================================================== */
+.property-images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.property-images img {
+  width: 130px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+
+  border: 1px solid #3a3b41;
+  transition: transform 0.25s ease;
+}
+
+.property-images img:hover {
+  transform: scale(1.05);
+}
+
+
+/* ==========================================================
+   BUTTONS (BACK, DELETE, VIEW)
+========================================================== */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-back,
+.btn-delete,
+.btn-view {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: 0.22s ease;
+}
+
+/* Back Button */
+.btn-back {
+  background: #374151;
+  color: #fff;
+}
+.btn-back:hover {
+  background: #4b5563;
+}
+
+/* Delete Button */
+.btn-delete {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* View Full Property */
+.btn-view {
+  background: #3b82f6;
+  color: #fff;
+  width: 100%;
+  margin-top: 15px;
+}
+.btn-view:hover {
+  background: #2563eb;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 900px) {
+  .enquiry-details-page {
+    flex-direction: column;
+  }
+}

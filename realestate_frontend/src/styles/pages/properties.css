@@ -1,0 +1,208 @@
+/* ============================================================
+   PROPERTIES PAGE — FINAL PREMIUM UI (Dark + Light Compatible)
+============================================================ */
+
+/* ---------------- PAGE WRAPPER ---------------- */
+.properties-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-body);
+  padding-top: var(--nav-height); /* fixes navbar overlap */
+  transition: background 0.3s ease;
+}
+
+/* ---------------- CATEGORY BAR ---------------- */
+.properties-category-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.properties-category-wrapper .category-bar {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------- SEARCH + FILTER ROW ---------------- */
+.search-filter-row {
+  margin-top: 25px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+/* ---------------- SEARCH BAR ---------------- */
+.search-wide {
+  flex: 1;
+  padding: 15px 18px;
+
+  background: var(--searchbox-bg);
+  border: 1.5px solid var(--searchbox-border);
+  border-radius: 14px;
+
+  font-size: 1rem;
+  color: var(--text-main);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-sm);
+
+  transition: 0.25s ease;
+}
+
+.search-wide::placeholder {
+  color: var(--text-muted);
+}
+
+.search-wide:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 14px rgba(120,200,255,0.45);
+}
+
+/* ============================================================
+   FILTER BUTTON – EXACT LOGIN BUTTON STYLE
+============================================================ */
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+  color: #ffffff;
+
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+
+  transition: 0.32s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+  box-shadow: 0 6px 28px rgba(21,198,177,0.55);
+}
+
+.filter-btn:active {
+  transform: scale(0.97);
+}
+
+/* LIGHT THEME OVERRIDE */
+:root[color-theme="light"] .filter-btn {
+  background: linear-gradient(120deg, #2563eb, #3b82f6);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
+}
+
+:root[color-theme="light"] .filter-btn:hover {
+  box-shadow: 0 6px 26px rgba(59,130,246,0.55);
+}
+
+/* ============================================================
+   FILTER BOX POPUP
+============================================================ */
+.filter-box {
+  position: absolute;
+  top: 60px;
+  right: 0;
+
+  width: 280px;
+  padding: 20px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  z-index: 2000;
+  animation: fadeUp 0.3s ease;
+}
+
+/* ============================================================
+   IMMERSIVE SECTION
+============================================================ */
+.dark-section {
+  margin-top: 0;
+  padding: 40px 22px 80px;
+
+  background: var(--immersive-bg);
+  border-radius: 26px 26px 0 0;
+
+  animation: fadeUp 0.55s ease;
+}
+
+/* ---------------- GRID ---------------- */
+.property-grid {
+  display: grid;
+  gap: 26px;
+  margin-top: 30px;
+}
+
+@media (min-width: 600px) {
+  .property-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .property-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   PAGINATION (UPGRADED LIKE LOGIN BUTTON)
+============================================================ */
+.pagination-box {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  padding: 14px 20px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-btn {
+  padding: 10px 24px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+  color: #ffffff;
+  font-weight: 700;
+
+  transition: 0.25s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* LIGHT MODE */
+:root[color-theme="light"] .page-btn {
+  background: linear-gradient(120deg, #2563eb, #3b82f6);
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

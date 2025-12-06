@@ -1,0 +1,78 @@
+/* =====================================================
+   WISHLIST PAGE — PREMIUM DARK + LIGHT THEME
+   Fully compatible with global theming
+===================================================== */
+
+/* Wrapper aligned with navbar */
+.wishlist-page {
+  width: 100%;
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+  background: var(--bg-body);
+  transition: 0.3s ease;
+}
+
+/* ---------------- CONTAINER ---------------- */
+.wishlist-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* ---------------- GRID ---------------- */
+.wishlist-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 26px;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .wishlist-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- EMPTY MESSAGE ---------------- */
+.wishlist-empty {
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 60px 10px;
+  color: var(--text-muted);
+}
+
+/* ---------------- EACH ITEM ---------------- */
+.wishlist-item {
+  position: relative;
+}
+
+/* ---------------- REMOVE BUTTON ---------------- */
+.remove-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, #e63946, #d62839);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+
+  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.45);
+  transition: 0.25s ease;
+}
+
+.remove-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Light mode version */
+:root[color-theme="light"] .remove-btn {
+  background: linear-gradient(90deg, #ff4d5e, #ff2f49);
+  box-shadow: 0 4px 12px rgba(255, 77, 94, 0.35);
+}
