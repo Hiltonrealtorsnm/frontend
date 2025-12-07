@@ -277,6 +277,88 @@ textarea {
   opacity: 0.6;
   cursor: not-allowed;
 }
+/* ============================================
+   ULTRA SMALL MOBILE (300px–360px)
+============================================ */
+@media (max-width: 360px) {
+
+  /* Wrapper padding shrink */
+  .sell-wrapper {
+    padding: calc(var(--nav-height) + 20px) 10px;
+  }
+
+  /* Title smaller */
+  .sell-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  /* Card compact */
+  .sell-card {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  /* Labels smaller */
+  .section-label {
+    font-size: 0.95rem;
+  }
+
+  .section-label.small {
+    font-size: 0.85rem;
+  }
+
+  /* Inputs tighter */
+  input,
+  select,
+  textarea {
+    font-size: 0.9rem;
+    padding: 9px 10px;
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  /* Force all rows into single column */
+  .form-row {
+    flex-direction: column;
+  }
+
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Image grid shrink */
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, 70px);
+    gap: 10px;
+  }
+
+  .img-box {
+    width: 70px;
+    height: 64px;
+  }
+
+  .remove-img {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  /* Submit button full width */
+  .submit-row {
+    grid-column: 1;
+    justify-content: center;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+}
+
 
 /* =======================================================
    RESPONSIVE
