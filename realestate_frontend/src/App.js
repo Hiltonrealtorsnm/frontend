@@ -81,7 +81,7 @@ export default function App() {
 
           <Route
             path="/admin/dashboard"
-            element={<AdminProtected><AdminDashboard /></AdminProtected>}
+            element={<AdminDashboard />}
           />
 
           <Route
