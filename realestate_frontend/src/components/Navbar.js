@@ -132,6 +132,7 @@ export default function Navbar() {
         <Link to="/properties" onClick={() => setOpen(false)}>Properties</Link>
         <Link to="/wishlist" onClick={() => setOpen(false)}>Wishlist</Link>
         <Link to="/about" onClick={() => setOpen(false)}>About Us</Link>
+        <Link to="/projects" onClick={() => setOpen(false)}>Projects</Link>
 
         <div style={{ marginTop: "auto" }}>
           <Link

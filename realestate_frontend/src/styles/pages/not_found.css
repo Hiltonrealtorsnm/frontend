@@ -1,0 +1,77 @@
+.notfound-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notfound-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.45);
+  color: white;
+}
+
+.notfound-card h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #60a5fa;
+}
+
+.notfound-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.notfound-card p {
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.notfound-card span {
+  color: #93c5fd;
+}
+
+.notfound-card button {
+  margin-top: 22px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.notfound-card button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* ✅ 300px Safe */
+@media(max-width: 360px) {
+  .notfound-card {
+    padding: 28px 18px;
+  }
+
+  .notfound-card h1 {
+    font-size: 3.8rem;
+  }
+
+  .notfound-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .notfound-card p {
+    font-size: 0.85rem;
+  }
+}

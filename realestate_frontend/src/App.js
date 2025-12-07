@@ -7,6 +7,7 @@ import "./styles/lazy.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";   // ⭐ IMPORT FOOTER
 import AdminProtected from "./components/AdminProtected";
+import NotFound from "./pages/NotFound";
 
 /* Public Pages */
 import Home from "./pages/Home";
@@ -127,7 +128,7 @@ export default function App() {
             path="/admin/enquiry/:id"
             element={<AdminProtected><AdminEnquiryDetails /></AdminProtected>}
           />
-
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </LayoutWrapper>
     </BrowserRouter>
