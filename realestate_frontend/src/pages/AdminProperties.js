@@ -10,6 +10,7 @@ import {
 } from "../api/api";
 
 import AdminLayout from "../components/AdminLayout";
+import FilterBar from "../components/FilterBar";   // ✅ FILTER BAR ADDED
 import "../styles/admin/admin_properties.css";
 
 export default function AdminProperties() {
@@ -24,18 +25,18 @@ export default function AdminProperties() {
     direction: "asc",
   });
 
+  // ✅ FILTER STATE FOR FILTER BAR
   const [filters, setFilters] = useState({
     city: "",
-    status: "",
     minPrice: "",
     maxPrice: "",
     bedrooms: "",
+    bathrooms: "",
   });
 
   const mountedRef = useRef(true);
-  const filterTimer = useRef(null);
 
-  // Prevent multi-click spam
+  // ✅ Prevent multi-click spam
   const [actionLoading, setActionLoading] = useState(false);
 
   const safe = (v, fallback = "") =>
@@ -92,8 +93,6 @@ export default function AdminProperties() {
                 id: p.propertyId,
                 count: data.totalElements ?? data.content.length,
               };
-
-            if (Array.isArray(data)) return { id: p.propertyId, count: data.length };
 
             return { id: p.propertyId, count: 0 };
           })
@@ -175,61 +174,17 @@ export default function AdminProperties() {
   };
 
   // ================================
-  // CSV EXPORT
-  // ================================
-  const exportPropertiesCSV = () => {
-    if (!sortedList.length) {
-      alert("No properties to download");
-      return;
-    }
-
-    const headers = [
-      "Property ID",
-      "Title",
-      "Listing Type",
-      "Price/MonthlyRent",
-      "City",
-      "Bedrooms",
-      "Bathrooms",
-      "Status",
-      "Enquiry Count",
-    ];
-
-    const rows = sortedList.map((p) => [
-      p.propertyId,
-      `"${(p.title || "").replace(/"/g, '""')}"`,
-      p.listingType,
-      p.listingType === "rent" ? p.monthlyRent || "" : p.price || "",
-      p.address?.city || "",
-      p.bedrooms ?? "",
-      p.bathrooms ?? "",
-      p.status || "",
-      enquiryCounts[p.propertyId] ?? 0,
-    ]);
-
-    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "properties.csv";
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
-
-  // ================================
-  // FILTERS
+  // ✅ APPLY FILTERS (FROM FILTER BAR)
   // ================================
   const applyFilters = async () => {
     setLoading(true);
     try {
       const params = {};
       if (filters.city) params.city = filters.city;
-      if (filters.status) params.status = filters.status;
       if (filters.minPrice) params.minPrice = filters.minPrice;
       if (filters.maxPrice) params.maxPrice = filters.maxPrice;
       if (filters.bedrooms) params.bedrooms = filters.bedrooms;
+      if (filters.bathrooms) params.bathrooms = filters.bathrooms;
 
       const res = await searchProperty(params);
 
@@ -255,19 +210,8 @@ export default function AdminProperties() {
     }
   };
 
-  const resetFilters = () => {
-    setFilters({
-      city: "",
-      status: "",
-      minPrice: "",
-      maxPrice: "",
-      bedrooms: "",
-    });
-    loadData();
-  };
-
   // ================================
-  // ACTION HANDLERS (multi-click safe)
+  // ✅ SAFE ACTION HANDLER
   // ================================
   const safeAction = async (callback) => {
     if (actionLoading) return;
@@ -278,132 +222,43 @@ export default function AdminProperties() {
 
   const handleApprove = (id) =>
     safeAction(async () => {
-      try {
-        await approveProperty(id);
-        await loadData();
-        alert("Approved");
-      } catch {
-        alert("Failed to approve");
-      }
+      await approveProperty(id);
+      await loadData();
     });
 
   const handleReject = (id) =>
     safeAction(async () => {
-      try {
-        await rejectProperty(id);
-        await loadData();
-        alert("Rejected");
-      } catch {
-        alert("Failed to reject");
-      }
+      await rejectProperty(id);
+      await loadData();
     });
 
   const handleDelete = (id) =>
     safeAction(async () => {
       if (!window.confirm("Delete this property?")) return;
-      try {
-        await deleteProperty(id);
-        await loadData();
-        alert("Deleted");
-      } catch {
-        alert("Failed to delete");
-      }
+      await deleteProperty(id);
+      await loadData();
     });
 
   const sortArrow = (key) =>
     sortConfig.key === key ? (sortConfig.direction === "asc" ? "▲" : "▼") : "⇅";
 
   // ================================
-  // RENDER
+  // ✅ RENDER
   // ================================
   return (
     <AdminLayout>
       <div className="admin-properties-container">
-        <h1 style={{ color: "black" }}>Manage Properties</h1>
+        <h1>Manage Properties</h1>
 
-        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <button
-            className="filter-btn export"
-            onClick={exportPropertiesCSV}
-            disabled={actionLoading}
-          >
-            ⬇ Download Properties CSV
-          </button>
+        {/* ✅ FILTER BAR POPUP BUTTON */}
+        <FilterBar
+          filters={filters}
+          setFilters={setFilters}
+          onApply={applyFilters}
+          isInlineButton
+        />
 
-          <div style={{ color: "#666" }}>
-            {loadingCounts
-              ? "Loading enquiry counts..."
-              : `Loaded ${Object.keys(enquiryCounts).length} enquiry counts`}
-          </div>
-        </div>
-
-        {/* FILTER BAR */}
-        <div className="filter-bar">
-          <input
-            placeholder="City"
-            value={filters.city}
-            onChange={(e) =>
-              setFilters({ ...filters, city: e.target.value })
-            }
-          />
-
-          <select
-            value={filters.status}
-            onChange={(e) =>
-              setFilters({ ...filters, status: e.target.value })
-            }
-          >
-            <option value="">Status</option>
-            <option value="pending">Pending</option>
-            <option value="approved">Approved</option>
-            <option value="rejected">Rejected</option>
-          </select>
-
-          <input
-            type="number"
-            placeholder="Min Price"
-            value={filters.minPrice}
-            onChange={(e) =>
-              setFilters({ ...filters, minPrice: e.target.value })
-            }
-          />
-
-          <input
-            type="number"
-            placeholder="Max Price"
-            value={filters.maxPrice}
-            onChange={(e) =>
-              setFilters({ ...filters, maxPrice: e.target.value })
-            }
-          />
-
-          <input
-            type="number"
-            placeholder="Bedrooms"
-            value={filters.bedrooms}
-            onChange={(e) =>
-              setFilters({ ...filters, bedrooms: e.target.value })
-            }
-          />
-
-          <button
-            className="filter-btn apply"
-            onClick={applyFilters}
-            disabled={actionLoading}
-          >
-            Apply
-          </button>
-
-          <button
-            className="filter-btn reset"
-            onClick={resetFilters}
-            disabled={actionLoading}
-          >
-            Reset
-          </button>
-        </div>
-
-        {/* TABLE */}
+        {/* ✅ TABLE */}
         <div className="table-wrap">
           {loading ? (
             <div className="table-loading">Loading properties…</div>
@@ -419,18 +274,10 @@ export default function AdminProperties() {
                   <th onClick={() => sortBy("title")}>
                     Title {sortArrow("title")}
                   </th>
-                  <th onClick={() => sortBy("seller")}>
-                    Seller {sortArrow("seller")}
-                  </th>
-                  <th onClick={() => sortBy("listingType")}>
-                    Listing {sortArrow("listingType")}
-                  </th>
-                  <th onClick={() => sortBy("price")}>
-                    Price / Rent {sortArrow("price")}
-                  </th>
-                  <th onClick={() => sortBy("status")}>
-                    Status {sortArrow("status")}
-                  </th>
+                  <th>Seller</th>
+                  <th>Listing</th>
+                  <th>Price / Rent</th>
+                  <th>Status</th>
                   <th>Enquiries</th>
                   <th>Actions</th>
                 </tr>
@@ -439,9 +286,9 @@ export default function AdminProperties() {
               <tbody>
                 {sortedList.map((p) => (
                   <tr key={p.propertyId}>
-                    <td>{p.propertyId}</td>
+                    <td data-label="ID">{p.propertyId}</td>
 
-                    <td>
+                    <td data-label="Title">
                       <a
                         href={`/admin/property/${p.propertyId}`}
                         className="admin-view-link"
@@ -450,11 +297,13 @@ export default function AdminProperties() {
                       </a>
                     </td>
 
-                    <td>{p.seller?.sellerName ?? "—"}</td>
+                    <td data-label="Seller">{p.seller?.sellerName ?? "—"}</td>
 
-                    <td>{p.listingType === "rent" ? "Rent" : "Sale"}</td>
+                    <td data-label="Listing">
+                      {p.listingType === "rent" ? "Rent" : "Sale"}
+                    </td>
 
-                    <td>
+                    <td data-label="Price">
                       {p.listingType === "sale" && p.price
                         ? `₹ ${Number(p.price).toLocaleString()}`
                         : ""}
@@ -463,70 +312,62 @@ export default function AdminProperties() {
                         : ""}
                     </td>
 
-                    <td>
+                    <td data-label="Status">
                       <span className={`status-badge status-${p.status}`}>
                         {p.status}
                       </span>
                     </td>
 
-                    <td>
+                    <td data-label="Enquiries">
                       {enquiryCounts[p.propertyId] ?? 0}
                       <a
                         href={`/admin/enquiries?property=${p.propertyId}`}
-                        style={{ marginLeft: 8, fontSize: 12 }}
+                        style={{ marginLeft: 8 }}
                       >
                         View
                       </a>
                     </td>
 
-                    <td className="actions-cell">
-                      {/* PENDING */}
+                    {/* ✅ MOBILE SAFE BUTTON STACK */}
+                    <td className="actions-cell mobile-actions" data-label="Actions">
                       {p.status === "pending" && (
                         <>
                           <button
                             className="action-btn btn-approve"
                             onClick={() => handleApprove(p.propertyId)}
-                            disabled={actionLoading}
                           >
                             Approve
                           </button>
                           <button
                             className="action-btn btn-reject"
                             onClick={() => handleReject(p.propertyId)}
-                            disabled={actionLoading}
                           >
                             Reject
                           </button>
                         </>
                       )}
 
-                      {/* APPROVED */}
                       {p.status === "approved" && (
                         <button
                           className="action-btn btn-reject"
                           onClick={() => handleReject(p.propertyId)}
-                          disabled={actionLoading}
                         >
                           Move to REJECTED
                         </button>
                       )}
 
-                      {/* REJECTED */}
                       {p.status === "rejected" && (
                         <button
                           className="action-btn btn-approve"
                           onClick={() => handleApprove(p.propertyId)}
-                          disabled={actionLoading}
                         >
                           Move to APPROVED
                         </button>
                       )}
 
-                      {/* DELETE */}
                       <button
                         className="action-btn btn-delete"
                         onClick={() => handleDelete(p.propertyId)}
-                        disabled={actionLoading}
                       >
                         Delete
                       </button>

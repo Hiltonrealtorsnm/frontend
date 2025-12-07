@@ -1,6 +1,5 @@
 /* ===================================================================
-   FILTER BAR — PREMIUM GLASS PANEL (FINAL FIXED VERSION)
-   With readable text, reduced blur, 4-row layout, dual columns
+   FILTER BAR — PREMIUM GLASS PANEL (FINAL + 300px SUPPORT)
 =================================================================== */
 
 .filter-wrapper {
@@ -51,13 +50,13 @@
   right: 0;
   width: 360px;
 
-  background: rgba(15, 23, 42, 0.78);  /* ⭐ Much darker for readability */
+  background: rgba(15, 23, 42, 0.78);
   border: 1px solid rgba(255,255,255,0.10);
 
   border-radius: 20px;
   padding: 22px;
 
-  backdrop-filter: blur(12px); /* ⭐ Reduced blur */
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow: 0 10px 34px rgba(0,0,0,0.45);
@@ -67,7 +66,7 @@
 }
 
 :root[color-theme="light"] .filter-box {
-  background: rgba(255,255,255,0.85); /* Light readable panel */
+  background: rgba(255,255,255,0.85);
   border: 1px solid rgba(0,0,0,0.08);
 }
 
@@ -85,7 +84,7 @@
 }
 
 /* ==========================================================
-   INPUT ITEMS (Glassy yet clean)
+   INPUT ITEMS
 ========================================================== */
 .filter-item {
   display: flex;
@@ -127,23 +126,20 @@
 }
 
 /* ==========================================================
-   ⭐ ROW LAYOUTS (Your requested design)
+   ⭐ TWO-COLUMN ROWS (DESKTOP)
 ========================================================== */
-
-/* Two-column rows */
 .filter-row-2 {
   display: flex;
   gap: 14px;
 }
 
-/* Children flex equally */
 .filter-row-2 > .filter-item {
   flex: 1;
   margin-bottom: 14px;
 }
 
 /* ==========================================================
-   ACTION BUTTONS (Row)
+   ACTION BUTTONS
 ========================================================== */
 .filter-actions {
   display: flex;
@@ -187,18 +183,70 @@
   filter: brightness(1.1);
 }
 
-/* Light theme reset button */
 :root[color-theme="light"] .filter-reset-btn {
   background: rgba(255,60,60,0.15);
   color: #c54848;
 }
 
 /* ==========================================================
-   RESPONSIVE
+   MOBILE (600px)
 ========================================================== */
 @media (max-width: 600px) {
   .filter-box {
     right: 0;
     width: 92vw;
+    padding: 18px;
+  }
+
+  .filter-title {
+    font-size: 1rem;
+  }
+
+  .filter-row-2 {
+    flex-direction: column;   /* ✅ Stack columns on mobile */
+    gap: 0;
+  }
+}
+
+/* ==========================================================
+   ✅ EXTRA SMALL MOBILE (300px - 360px)
+========================================================== */
+@media screen and (max-width: 360px) {
+
+  .filter-box {
+    width: 95vw;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .filter-title {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .filter-item {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .filter-icon {
+    font-size: 1rem;
+  }
+
+  .filter-item input,
+  .filter-item select {
+    font-size: 0.88rem;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-apply-btn,
+  .filter-reset-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 11px 0;
   }
 }

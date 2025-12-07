@@ -314,3 +314,41 @@
     grid-template-columns: 1fr;
   }
 }
+/* ---------------------------------------
+   Ultra Small Devices (300px–360px)
+---------------------------------------- */
+@media (max-width: 360px) {
+  .admin-dash-container {
+    padding: 14px;
+  }
+
+  .dash-title,
+  .admin-dash-container h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .dash-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .dash-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .dash-card p {
+    font-size: 0.82rem;
+  }
+
+  .admin-actions,
+  .dash-actions {
+    gap: 10px;
+  }
+
+  .btn-view,
+  .dash-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+}

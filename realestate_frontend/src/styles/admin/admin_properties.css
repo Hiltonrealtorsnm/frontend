@@ -276,3 +276,116 @@
     font-weight: 600;
   }
 }
+/* ==========================================================
+   ULTRA SMALL MOBILE (300px–360px)
+========================================================== */
+@media (max-width: 360px) {
+
+  /* Page padding tighten */
+  .admin-properties-container {
+    padding: 12px;
+  }
+
+  .admin-properties-container h1 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  /* -------- FILTER BAR -------- */
+  .filter-bar {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;          /* stack properly */
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .filter-btn {
+    width: 100%;
+    padding: 9px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* -------- TABLE WRAPPER -------- */
+  .table-wrap {
+    padding: 12px;
+  }
+
+  /* -------- MOBILE TABLE CARDS -------- */
+  .admin-table tr {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .admin-table td {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+
+  .admin-table td::before {
+    font-size: 0.75rem;
+  }
+
+  /* -------- STATUS BADGES -------- */
+  .status-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  /* -------- ACTION BUTTONS -------- */
+  .action-btn {
+    font-size: 0.7rem;
+    padding: 5px 7px;
+    margin-bottom: 4px;
+  }
+
+  /* -------- LINKS -------- */
+  .admin-view-link {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ==========================================================
+   FIX: 300px–360px ACTION BUTTON OVERFLOW
+========================================================== */
+@media (max-width: 360px) {
+
+  /* Stack action buttons vertically */
+  .admin-table td:last-child,
+  .mobile-actions,
+  .action-btn-group,
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  /* Force all buttons to fit width */
+  .action-btn,
+  .btn-approve,
+  .btn-reject,
+  .btn-delete {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+  }
+
+  /* Fix status + view row spacing */
+  .status-badge {
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  /* Prevent card horizontal overflow */
+  .admin-table tr {
+    overflow: hidden;
+  }
+
+}

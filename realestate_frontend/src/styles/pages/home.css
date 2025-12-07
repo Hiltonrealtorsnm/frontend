@@ -1,6 +1,6 @@
 /* ============================================================
    HOME PAGE — PREMIUM THEME WITH FLOATING CATEGORY BAR
-   Works with fixed navbar (no gap issues)
+   ✅ FULLY RESPONSIVE (300px → Desktop)
 ============================================================ */
 
 /* PAGE WRAPPER */
@@ -8,8 +8,9 @@
   width: 100%;
   background: var(--home-bg);
   min-height: 100vh;
-  padding-top: var(--nav-height); /* 👈 fixes gap under navbar */
+  padding-top: var(--nav-height);
   transition: background 0.35s ease;
+  overflow-x: hidden;
 }
 
 /* ---------------- HERO SECTION ---------------- */
@@ -36,29 +37,32 @@
   background: var(--hero-overlay);
 }
 
-/* Hero text + search */
+/* ✅ HERO CONTENT — SAFE FOR 300px */
 .hero-content {
   position: absolute;
-  left: 60px;
-  bottom: 130px; /* moved up to fit category bar */
+  left: 50%;
+  bottom: 130px;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
   z-index: 10;
   color: var(--text-light);
-  max-width: 600px;
+  max-width: 92%;
+  text-align: center;
 }
 
 .hero-content h1 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 /* ---------------- SEARCH BAR ---------------- */
 .hero-search {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
 
   background: var(--searchbox-bg);
@@ -68,10 +72,12 @@
 
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow-md);
+  width: 100%;
 }
 
 .hero-search input {
   flex: 1;
+  min-width: 160px;
   padding: 12px 14px;
   font-size: 1rem;
 
@@ -83,7 +89,8 @@
 }
 
 .hero-search button {
-  padding: 12px 24px;
+  width: 100%;
+  padding: 12px;
   font-size: 1rem;
   font-weight: 700;
   border-radius: 10px;
@@ -104,71 +111,106 @@
 .category-wrapper {
   position: absolute;
   left: 50%;
-  bottom: -32px; /* Category bar overlaps hero */
+  bottom: -32px;
   transform: translateX(-50%);
-
   display: flex;
   justify-content: center;
   z-index: 25;
+  width: 100%;
+  padding: 0 10px;
 }
 
 .category-bar {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 
   background: var(--category-bg);
   border: 1px solid var(--category-border);
-  padding: 14px 20px;
+  padding: 10px;
 
-  border-radius: 16px;
+  border-radius: 14px;
 
   backdrop-filter: blur(16px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 360px;
 }
 
 .category-bar button {
-  padding: 12px 28px;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
   background: var(--category-btn-bg);
   border: 1px solid var(--category-btn-border);
   font-weight: 700;
   cursor: pointer;
   color: var(--category-btn-text);
   transition: 0.25s ease;
+  font-size: 0.9rem;
+  width: 48%;
 }
 
 .category-bar button:hover {
   background: rgba(255,255,255,0.2);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* ---------------- IMMERSIVE SECTION ---------------- */
 .immersive-section {
-  padding: 70px 22px 60px;
+  padding: 70px 14px 60px;
   background: var(--immersive-bg);
   border-radius: 36px 36px 0 0;
   margin-top: 20px;
 }
 
 .section-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 16px;
   color: var(--text-main);
+  text-align: center;
 }
 
 /* PROPERTY GRID */
 .property-grid {
   display: grid;
-  gap: 26px;
+  gap: 20px;
 }
 
 @media (min-width: 600px) {
-  .property-grid { grid-template-columns: repeat(2, 1fr); }
+  .property-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 992px) {
-  .property-grid { grid-template-columns: repeat(3, 1fr); }
+  .property-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ✅ EXTRA ULTRA-SMALL FIX (300px–360px) */
+@media (max-width: 360px) {
+  .hero-section {
+    height: 360px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-search input {
+    font-size: 0.9rem;
+  }
+
+  .hero-search button {
+    font-size: 0.9rem;
+  }
+
+  .category-bar button {
+    width: 100%;
+  }
 }
 
 /* GLOBAL HOME THEME COLORS */
