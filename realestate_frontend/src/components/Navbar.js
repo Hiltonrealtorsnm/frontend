@@ -1,5 +1,5 @@
 // src/components/Navbar.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHeart, FaBars, FaTimes } from "react-icons/fa";
 import "../styles/components/navbar.css";
@@ -8,6 +8,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [wishCount, setWishCount] = useState(0);
+  const drawerRef = useRef(null);
 
   /* ---------------------- THEME TOGGLE ---------------------- */
   const [theme, setTheme] = useState("dark");
@@ -49,6 +50,18 @@ export default function Navbar() {
     }
   };
 
+  /* ---------------------- CLICK OUTSIDE TO CLOSE ---------------------- */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (open && drawerRef.current && !drawerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   return (
     <>
       {/* ⭐ NAVBAR FLOATING + CENTERED */}
@@ -81,10 +94,9 @@ export default function Navbar() {
 
             {/* 🌗 Light/Dark Theme Toggle */}
             <button className="theme-toggle" onClick={toggleTheme}>
-                <span className="sun">☀️</span>
-                <span className="moon">🌙</span>
-              </button>
-
+              <span className="sun">☀️</span>
+              <span className="moon">🌙</span>
+            </button>
 
             {/* ❤️ Wishlist */}
             <Link to="/wishlist" className="icon-btn wish-badge" title="Wishlist">
@@ -100,7 +112,7 @@ export default function Navbar() {
       </header>
 
       {/* ⭐ MOBILE DRAWER */}
-      <aside className={`mobile-drawer ${open ? "open" : ""}`}>
+      <aside ref={drawerRef} className={`mobile-drawer ${open ? "open" : ""}`}>
         <button className="close-btn" onClick={() => setOpen(false)}>
           <FaTimes size={18} />
         </button>
