@@ -7,29 +7,26 @@ const api = axios.create({
 });
 
 // =========================================
-// ✅✅✅ ATTACH ADMIN JWT TOKEN (FIXED)
+// 🔐 ATTACH JWT TOKEN
 // =========================================
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("adminToken"); // ✅ FIXED NAME
+  const token = localStorage.getItem("adminToken");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
 // =========================================
-// ✅✅✅ ADMIN AUTH (FIXED)
+// 🔑 AUTH
 // =========================================
 export async function login(email, password) {
-  const res = await api.post("/api/admin/login", { email, password });
-
+  const res = await api.post("/auth/login", { email, password });
   const token = res.data?.token || res.data;
-
-  localStorage.setItem("adminToken", token); // ✅ FIXED NAME
-
+  localStorage.setItem("adminToken", token);
   return token;
 }
 
 export function logout() {
-  localStorage.removeItem("adminToken"); // ✅ FIXED NAME
+  localStorage.removeItem("adminToken");
 }
 
 // =========================================
@@ -89,6 +86,41 @@ export function searchProperty(params) {
 export const markPropertySold = (id) => api.put(`/property/sold/${id}`);
 
 // =========================================
+// 📸 PROPERTY IMAGES
+// =========================================
+export function uploadPropertyImages(propertyId, files) {
+  const form = new FormData();
+  files.forEach((f) => form.append("images", f));
+  return api.post(`/property/uploadImages/${propertyId}`, form, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+}
+
+export function uploadSinglePropertyImage(propertyId, file) {
+  const form = new FormData();
+  form.append("image", file);
+  return api.post(`/property/uploadImage/${propertyId}`, form, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+}
+
+export function replaceImage(imageId, file) {
+  const form = new FormData();
+  form.append("image", file);
+  return api.put(`/property/replaceImage/${imageId}`, form, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+}
+
+export function deleteImage(imageId) {
+  return api.delete(`/property/deleteImage/${imageId}`);
+}
+
+export function reorderImages(propertyId, newOrder) {
+  return api.put(`/property/reorderImages/${propertyId}`, newOrder);
+}
+
+// =========================================
 // 📩 ENQUIRIES
 // =========================================
 export function sendEnquiry(data) {
@@ -102,33 +134,41 @@ export function getAllEnquiries(page = 0, size = 20) {
 export function getEnquiriesByProperty(propertyId, page = 0, size = 20) {
   return api.get(`/enquiry/property/${propertyId}?page=${page}&size=${size}`);
 }
-
 export function deleteEnquiry(id) {
   return api.delete(`/enquiry/${id}`);
 }
 
+
 // =========================================
-// 🏗 PROJECT API
+// 🏗 PROJECT API (PERFECTLY FIXED)
 // =========================================
+
+// GET all projects
 export const getProjects = (page = 0, size = 20) =>
   api.get(`/project/all?page=${page}&size=${size}&sort=projectId,desc`);
 
+// GET project by ID
 export const getProjectById = (id) => api.get(`/project/${id}`);
 
+// CREATE project
 export const createProject = (body) => api.post(`/project/add`, body);
 
+// UPDATE project
 export const updateProject = (id, body) =>
   api.put(`/project/update/${id}`, body);
 
-export const deleteProject = (id) =>
-  api.delete(`/project/delete/${id}`);
+// DELETE project
+export const deleteProject = (id) => api.delete(`/project/delete/${id}`);
 
+// UPDATE project status
 export const updateProjectStatus = (id, status) =>
   api.put(`/project/updateStatus/${id}?status=${status}`);
 
+// GET ALL IMAGES FOR PROJECT
 export const getProjectImages = (projectId) =>
   api.get(`/project/getImages/${projectId}`);
 
+// UPLOAD SINGLE PROJECT IMAGE
 export const uploadProjectImage = (projectId, file) => {
   const form = new FormData();
   form.append("image", file);
@@ -137,6 +177,7 @@ export const uploadProjectImage = (projectId, file) => {
   });
 };
 
+// UPLOAD MULTIPLE IMAGES
 export const uploadProjectImages = (projectId, files) => {
   const form = new FormData();
   files.forEach((f) => form.append("images", f));
@@ -145,6 +186,7 @@ export const uploadProjectImages = (projectId, files) => {
   });
 };
 
+// DELETE PROJECT IMAGE
 export const deleteProjectImage = (imageId) =>
   api.delete(`/project/deleteImage/${imageId}`);
 
