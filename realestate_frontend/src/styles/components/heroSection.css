@@ -6,7 +6,7 @@
   width: 100%;
   height: 450px;
   position: relative;
-  overflow: visible !important;  /* 🔥 allow bar to overflow */
+  overflow: visible !important;
   border-bottom-left-radius: 26px;
   border-bottom-right-radius: 26px;
 }
@@ -94,21 +94,19 @@
 
 .hero-bottom-category {
   position: absolute;
-  bottom: -30px;              /* FLOAT */
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-
   z-index: 20;
   pointer-events: auto;
 }
 
-/* Make bar slightly larger for premium feel */
 .hero-bottom-category .category-bar {
   transform: scale(1.06);
 }
 
 /* =====================================================
-   RESPONSIVE FIXES
+   TABLET & MOBILE (768px)
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -119,6 +117,7 @@
   .hero-content {
     bottom: 160px;
     left: 22px;
+    right: 22px;
   }
 
   .hero-content h1 {
@@ -126,7 +125,7 @@
   }
 
   .hero-search {
-    width: 90%;
+    width: 100%;
   }
 
   .hero-bottom-category {
@@ -135,5 +134,56 @@
 
   .hero-bottom-category .category-bar {
     transform: scale(1);
+  }
+}
+
+/* =====================================================
+   EXTRA SMALL MOBILE (300px - 360px)
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+  .hero-section {
+    height: 330px;
+  }
+
+  .hero-content {
+    left: 14px;
+    right: 14px;
+    bottom: 140px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+
+  .hero-search {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .hero-search input {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .hero-search button {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .hero-bottom-category {
+    bottom: -18px;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .hero-bottom-category .category-bar {
+    transform: scale(0.95);
   }
 }

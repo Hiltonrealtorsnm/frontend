@@ -1,4 +1,3 @@
-
 /* ======================================================
    ADMIN LAYOUT – MAIN WRAPPER
 ====================================================== */
@@ -11,63 +10,208 @@
   font-family: "Inter", sans-serif;
 }
 
-/* Main content area */
-.admin-content {
-  flex: 1;
-  padding: 30px 40px;
-  background: #11131b;
-  overflow-y: auto;
-}
-/* MAIN LAYOUT */
-.admin-layout {
-  display: flex;
-  min-height: 100vh;
-  background: #0f1117;
-  color: #e5e7eb;
-  font-family: "Inter", sans-serif;
-}
+/* ======================================================
+   FIXED SIDEBAR (DESKTOP)
+====================================================== */
 
-/* FIXED SIDEBAR SPACE */
-.admin-content {
-  flex: 1;
-  padding: 30px 40px;
-
-  margin-left: 250px;  /* ⭐ Space for fixed sidebar */
-  background: #11131b;
-
-  height: 100vh;
-  overflow-y: auto;     /* Main content scrolls */
-}
 .admin-sidebar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 240px;
   height: 100vh;
-  background: #111827;
-  color: white;
-  padding: 25px 20px;
-  border-right: 1px solid #1f2937;
+  z-index: 1000;
+
+  padding: 30px 20px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-right: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: transform 0.35s ease;
 }
 
-/* Content shifts right */
+/* ======================================================
+   MAIN CONTENT AREA
+====================================================== */
+
 .admin-content {
+  flex: 1;
   margin-left: 240px;
-  padding: 30px;
+  padding: 30px 40px;
+  background: #11131b;
+  height: 100vh;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
 }
 
-/* Mobile */
+/* ======================================================
+   LOGO
+====================================================== */
+
+.admin-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ======================================================
+   NAVIGATION LINKS
+====================================================== */
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-item {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  transition: 0.25s ease;
+}
+
+.nav-item:hover {
+  background: rgba(59,130,246,0.25);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.45);
+}
+
+/* ======================================================
+   LOGOUT BUTTON
+====================================================== */
+
+.admin-logout {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239,68,68,0.45);
+  color: #fca5a5;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.admin-logout:hover {
+  background: rgba(239,68,68,0.35);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ======================================================
+   MOBILE SIDEBAR — SLIDE FROM TOP
+====================================================== */
+
 @media (max-width: 768px) {
+
   .admin-sidebar {
-    position: absolute;
-    width: 200px;
-    transform: translateX(-100%);
-    transition: 0.3s;
+    width: 100%;
+    height: auto;
+
+    transform: translateY(-100%);
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
   }
 
   .admin-sidebar.open {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   .admin-content {
     margin-left: 0;
+    padding: 20px;
+    padding-top: 70px;
+  }
+}
+
+/* ======================================================
+   ULTRA SMALL MOBILE (300px–360px)
+====================================================== */
+
+@media (max-width: 360px) {
+
+  .admin-sidebar {
+    padding: 18px 14px;
+  }
+
+  .admin-logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-item {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .admin-logout {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .admin-content {
+    padding: 12px;
+    padding-top: 70px;
+  }
+}
+
+/* ======================================================
+   MOBILE MENU BUTTON
+====================================================== */
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1200;
+
+  background: linear-gradient(145deg, #2563eb, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 1.2rem;
+  padding: 10px 14px;
+
+  box-shadow: 0 6px 18px rgba(59,130,246,0.4);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
   }
 }
