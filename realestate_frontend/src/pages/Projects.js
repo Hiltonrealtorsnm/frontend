@@ -19,7 +19,7 @@ export default function Projects() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8080/project/all?page=0&size=20&sort=id,desc"
+        "https://hiltonbackend.onrender.com/project/all?page=0&size=20&sort=projectId,desc"
       );
 
       if (!response.ok) {
@@ -49,7 +49,7 @@ export default function Projects() {
           const firstImage =
             p.images?.length > 0
               ? p.images[0].imageUrl
-              : "https://via.placeholder.com/600x400?text=No+Image";
+              : "https://picsum.photos/600/400";
 
           const projectStatus = p.status?.replace("_", " ") || "Unknown";
 
@@ -82,7 +82,9 @@ export default function Projects() {
                   {p.location || "Location not available"}
                 </p>
 
-                <p className="project-type">{p.type || "Type not mentioned"}</p>
+                <p className="project-type">
+                  {p.type || "Type not mentioned"}
+                </p>
 
                 <div className="project-price">
                   ₹ {p.priceRange || p.priceBigint || "N/A"}

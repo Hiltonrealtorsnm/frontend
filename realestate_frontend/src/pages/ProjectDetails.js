@@ -26,7 +26,9 @@ export default function ProjectDetails() {
   // -----------------------------
   const fetchProject = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/project/${id}`);
+      const res = await fetch(
+        `https://hiltonbackend.onrender.com/project/${id}`
+      );
       if (!res.ok) throw new Error("Project not found");
 
       const data = await res.json();
@@ -41,13 +43,13 @@ export default function ProjectDetails() {
   // -----------------------------
   const fetchProjectImages = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/project/getImages/${id}`);
+      const res = await fetch(
+        `https://hiltonbackend.onrender.com/project/getImages/${id}`
+      );
       const data = await res.json();
       setImages(data);
 
-      // Set first image as active
       if (data.length > 0) setCurrentImg(0);
-
     } catch (err) {
       console.error("Error loading images:", err);
     }
@@ -61,8 +63,7 @@ export default function ProjectDetails() {
   // -----------------------------
   // IF PROJECT NOT FOUND
   // -----------------------------
-  if (!project)
-    return <div className="error">Project not found</div>;
+  if (!project) return <div className="error">Project not found</div>;
 
   return (
     <div className="pd-page">
@@ -74,7 +75,11 @@ export default function ProjectDetails() {
       {/* HERO IMAGE */}
       <div className="pd-hero">
         <img
-          src={images[currentImg] || "/placeholder.jpg"}
+          src={
+            images.length > 0
+              ? images[currentImg]
+              : "https://picsum.photos/800/500"
+          }
           alt=""
           className="pd-hero-img"
         />
@@ -119,9 +124,15 @@ export default function ProjectDetails() {
         <h2 className="pd-heading">Project Overview</h2>
 
         <div className="pd-grid">
-          <div><b>Type:</b> {project.type}</div>
-          <div><b>Status:</b> {project.status}</div>
-          <div><b>Price Bigint:</b> {project.priceBigint}</div>
+          <div>
+            <b>Type:</b> {project.type}
+          </div>
+          <div>
+            <b>Status:</b> {project.status}
+          </div>
+          <div>
+            <b>Price Bigint:</b> {project.priceBigint}
+          </div>
         </div>
       </div>
 
@@ -132,9 +143,7 @@ export default function ProjectDetails() {
       </div>
 
       {/* CONTACT BUTTON */}
-      <button className="pd-contact-btn">
-        Contact Builder →
-      </button>
+      <button className="pd-contact-btn">Contact Builder →</button>
     </div>
   );
 }
