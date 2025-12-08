@@ -19,7 +19,7 @@ api.interceptors.request.use((config) => {
 // 🔑 AUTH
 // =========================================
 export async function login(email, password) {
-  const res = await api.post("/auth/login", { email, password });
+  const res = await api.post("/admin/login", { email, password });
   const token = res.data?.token || res.data;
   localStorage.setItem("adminToken", token);
   return token;
