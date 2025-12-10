@@ -37,7 +37,7 @@ export default function Footer() {
 
           <p>📞 +91 8976489111</p>
           <p>📧 office@hiltonrealtorsnm.com</p>
-          <p>📍 Kerala, India</p>
+          <p>📍 Shop No.01, Mayuresh Delta, Plot No.01, Sector 10-B, Ulwe, Navi Mumbai (MH) – 410206</p>
 
           <div className="footer-social">
             <a href="#">🌐</a>

@@ -1,8 +1,8 @@
-// src/components/Navbar.js
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHeart, FaBars, FaTimes } from "react-icons/fa";
 import "../styles/components/navbar.css";
+import logo from "../assets/logo.jpg";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -59,29 +59,29 @@ export default function Navbar() {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
   return (
     <>
-      {/* ⭐ NAVBAR FLOATING + CENTERED */}
+      {/* ✅ NAVBAR */}
       <header className="navbar" role="navigation">
         <div className="navbar-inner">
 
+          {/* ✅ LEFT: LOGO */}
           <div className="nav-left">
-            {/* Mobile Menu Button */}
-            <button
-              className="mobile-menu-btn"
-              aria-label="Open menu"
-              onClick={() => setOpen(true)}
-            >
-              <FaBars size={18} />
-            </button>
-
-            <Link to="/" className="nav-logo">HiltonRealtorsNM</Link>
+            <Link to="/" className="nav-logo">
+              <img
+                src={logo}
+                alt="Hilton Realtors"
+                className="nav-logo-img"
+              />
+              <span className="nav-logo-text">Hilton Realtors</span>
+            </Link>
           </div>
 
-          {/* Desktop Links */}
+          {/* ✅ CENTER: DESKTOP LINKS */}
           <nav className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/properties">Properties</Link>
@@ -90,28 +90,37 @@ export default function Navbar() {
             <Link to="/about">About Us</Link>
           </nav>
 
+          {/* ✅ RIGHT: ACTIONS */}
           <div className="nav-actions">
-
-            {/* 🌗 Light/Dark Theme Toggle */}
             <button className="theme-toggle" onClick={toggleTheme}>
-              <span className="sun">☀️</span>
               <span className="moon">🌙</span>
+              <span className="sun">☀️</span>
             </button>
 
-            {/* ❤️ Wishlist */}
-            <Link to="/wishlist" className="icon-btn wish-badge" title="Wishlist">
+            <Link to="/wishlist" className="icon-btn wish-badge">
               <FaHeart />
-              {wishCount > 0 && <span className="wish-count">{wishCount}</span>}
+              {wishCount > 0 && (
+                <span className="wish-count">{wishCount}</span>
+              )}
             </Link>
 
-            {/* Login */}
-            <Link to="/admin/login" className="nav-login-btn">Login</Link>
-          </div>
+            <Link to="/admin/login" className="nav-login-btn">
+              Login
+            </Link>
 
+            {/* ✅ HAMBURGER ON RIGHT */}
+            <button
+              className="mobile-menu-btn"
+              aria-label="Open menu"
+              onClick={() => setOpen(true)}
+            >
+              <FaBars size={18} />
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* ⭐ MOBILE DRAWER */}
+      {/* ✅ MOBILE DRAWER */}
       <aside ref={drawerRef} className={`mobile-drawer ${open ? "open" : ""}`}>
         <button className="close-btn" onClick={() => setOpen(false)}>
           <FaTimes size={18} />
