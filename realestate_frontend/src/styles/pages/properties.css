@@ -280,3 +280,100 @@
     font-size: 0.88rem;
   }
 }
+
+/* =========================================================
+   ✅ HARD FIX — 300px–360px TRUE MOBILE SUPPORT
+========================================================= */
+@media screen and (max-width: 360px) {
+
+  /* ✅ Kill all horizontal scroll */
+  html, body {
+    width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  /* ✅ Page padding full control */
+  .properties-page {
+    padding-top: var(--nav-height);
+  }
+
+  /* ✅ Category bar full width */
+  .properties-category-wrapper {
+    padding: 0 8px;
+    margin: 12px 0;
+  }
+
+  .properties-category-wrapper .category-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ✅ SEARCH + FILTER STACK PERFECTLY */
+  .search-filter-row {
+    flex-direction: column !important;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .search-wide {
+    width: 100% !important;
+    font-size: 0.85rem;
+    padding: 11px 12px;
+  }
+
+  .filter-btn {
+    width: 100% !important;
+    padding: 11px 0;
+    font-size: 0.85rem;
+  }
+
+  /* ✅ FILTER POPUP TRUE FULL WIDTH */
+  .filter-box {
+    position: fixed !important;
+    top: calc(var(--nav-height) + 10px);
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 94vw !important;
+    max-width: 94vw !important;
+    padding: 14px;
+  }
+
+  /* ✅ IMMERSIVE SECTION SAFE */
+  .dark-section {
+    padding: 22px 12px 60px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  /* ✅ GRID HARD FORCE SINGLE COLUMN */
+  .property-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  /* ✅ PROPERTY CARDS NEVER OVERFLOW */
+  .property-card,
+  .property-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* ✅ PAGINATION PERFECT STACK */
+  .pagination-box {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .page-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.85rem;
+  }
+
+  /* ✅ FORM INPUTS NEVER OVERFLOW */
+  input, select, textarea {
+    max-width: 100% !important;
+  }
+}

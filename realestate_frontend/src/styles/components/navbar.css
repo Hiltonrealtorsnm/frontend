@@ -1,5 +1,5 @@
 /* ============================================================
-   ✅ PREMIUM GLASSMORPHIC NAVBAR — FINAL CLEAN 300px VERSION
+   ✅ FINAL PREMIUM NAVBAR + SIDE DRAWER (300px SAFE)
 ============================================================ */
 
 /* ---------- GLOBAL NAV HEIGHT ---------- */
@@ -16,16 +16,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 12px !important;
+
+  padding: 0 12px;
   position: fixed;
   top: 0;
   left: 0;
+
   background: var(--nav-bg-glass);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
+
   border-bottom: 1px solid var(--nav-border);
   color: var(--nav-text);
-  z-index: 2000;
+
+  z-index: 5000; /* ✅ Always above drawer */
   transition: 0.3s ease;
 }
 
@@ -57,7 +61,6 @@
   color: var(--nav-link);
   font-size: 0.95rem;
   font-weight: 600;
-  transition: 0.3s ease;
 }
 
 /* ---------- NAV ACTIONS ---------- */
@@ -72,12 +75,19 @@
   padding: 9px 18px;
   border-radius: 14px;
   border: none;
-  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+
+  background: linear-gradient(
+    120deg,
+    var(--brand-primary),
+    var(--brand-primary-2)
+  );
   color: white;
+
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+
+  box-shadow: 0 4px 16px rgba(21, 198, 177, 0.35);
 }
 
 /* ---------- THEME TOGGLE ---------- */
@@ -115,30 +125,37 @@
   }
 
   .nav-logo {
-    display: none !important;
+    display: none;
   }
 }
 
 /* ============================================================
-   ✅ MOBILE DRAWER (ALWAYS ABOVE NAVBAR)
+   ✅ SIDE MOBILE DRAWER (NOT FULLSCREEN)
+   ✅ DOES NOT COVER NAVBAR
 ============================================================ */
 .mobile-drawer {
   position: fixed;
-  right: -100%;
-  top: 0;
-  width: 240px;
-  height: 100vh;
-  padding: 70px 22px 22px; /* space for close button */
+  top: var(--nav-height);              /* ✅ Below navbar */
+  right: -260px;
+
+  width: 260px;
+  height: calc(100vh - var(--nav-height));
+
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+
   background: var(--drawer-bg-glass);
   color: var(--drawer-text);
+
   backdrop-filter: blur(16px) saturate(180%);
   border-left: 1px solid var(--nav-border);
-  box-shadow: -4px 0 26px rgba(0,0,0,0.45);
-  transition: 0.35s ease;
-  z-index: 9999;
+
+  box-shadow: -4px 0 26px rgba(0, 0, 0, 0.45);
+  transition: right 0.35s ease;
+
+  z-index: 3000;
 }
 
 .mobile-drawer.open {
@@ -150,26 +167,28 @@
 ============================================================ */
 .close-btn {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 42px;
-  height: 42px;
+  top: 12px;
+  right: 12px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 50%;
   border: none;
+
   background: linear-gradient(135deg, #ff4d4d, #c71616);
   color: white;
-  font-size: 1.3rem;
+
+  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(255,0,0,0.45);
+
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.4);
   transition: 0.25s ease;
 }
 
 .close-btn:hover {
   transform: scale(1.08);
-  background: linear-gradient(135deg, #ff6b6b, #e11d48);
 }
 
 .close-btn:active {
@@ -180,21 +199,21 @@
    ✅ ULTRA SMALL MOBILE (≤ 360px / 300px SAFE)
 ============================================================ */
 @media (max-width: 360px) {
-
   :root {
     --nav-height: 68px;
   }
 
-  body, html {
+  body,
+  html {
     overflow-x: hidden;
   }
 
   .navbar {
-    padding: 0 8px !important;
+    padding: 0 8px;
   }
 
   .navbar-inner {
-    padding: 0 6px !important;
+    padding: 0 6px;
   }
 
   .nav-login-btn {
@@ -217,17 +236,7 @@
     padding: 2px 5px;
   }
 
-  input,
-  select,
-  textarea {
-    max-width: 100%;
-  }
-
-  .hero-content {
-    padding: 0 10px;
-  }
-
-  .filter-row-2 {
-    flex-direction: column;
+  .mobile-drawer {
+    width: 220px;
   }
 }
