@@ -10,7 +10,7 @@ export default function Footer() {
 
         {/* BRAND / LOGO */}
         <div className="footer-col">
-          <h2 className="footer-logo">🏠 RealEstate</h2>
+          <h2 className="footer-logo">🏠 HiltonRealtorsNM</h2>
           <p>Your trusted partner for buying, renting & selling properties.</p>
         </div>
 
@@ -35,9 +35,9 @@ export default function Footer() {
         <div className="footer-col">
           <h3>Contact</h3>
 
-          <p>📞 +91 98765 43210</p>
-          <p>📧 support@realestate.com</p>
-          <p>📍 Chennai, India</p>
+          <p>📞 +91 8976489111</p>
+          <p>📧 office@hiltonrealtorsnm.com</p>
+          <p>📍 Kerala, India</p>
 
           <div className="footer-social">
             <a href="#">🌐</a>
@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} RealEstate. All rights reserved.
+        © {new Date().getFullYear()} Fintalks. All rights reserved.
       </div>
     </footer>
   );

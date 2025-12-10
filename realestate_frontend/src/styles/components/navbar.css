@@ -274,4 +274,385 @@
   .hero-content {
     padding: 0 10px;
   }
+  /* ======================================================
+   ✅ HIDE LOGO TEXT ON MOBILE ONLY
+====================================================== */
+
+  .nav-logo {
+    display: none !important;
+  }
+
+
+}
+
+/* ======================================================
+   ✅ FIX: MOBILE DRAWER SHOULD OVERLAP NAVBAR
+====================================================== */
+
+/* Navbar stays below drawer */
+.navbar {
+  z-index: 2000 !important;
+}
+
+/* Mobile drawer ALWAYS on top */
+.mobile-drawer {
+  z-index: 5000 !important;
+}
+
+/* Extra safety for ultra small devices */
+@media (max-width: 360px) {
+  .mobile-drawer {
+    z-index: 9999 !important;
+  }
+} the cancel look wierd background didnot match and i want red color rightside corner /* ============================================================
+   PREMIUM GLASSMORPHIC NAVBAR — FINAL 300px VERSION
+============================================================ */
+
+/* Define navbar height globally */
+:root {
+  --nav-height: 80px;
+}
+
+/* ---------------- BASE NAVBAR ---------------- */
+.navbar {
+  width: 100%;
+  height: var(--nav-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 12px !important;
+  margin: 0 !important;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: var(--nav-bg-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  border-bottom: 1px solid var(--nav-border);
+  color: var(--nav-text);
+
+  z-index: 2000;
+  transition: 0.3s ease;
+}
+
+.navbar-inner {
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------------- LOGO ---------------- */
+.nav-logo {
+  color: var(--nav-text);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.6px;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+/* ---------------- NAV LINKS ---------------- */
+.nav-links {
+  display: flex;
+  gap: 26px;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--nav-link);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+/* ---------------- NAV ACTIONS ---------------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ---------------- LOGIN BUTTON ---------------- */
+.nav-login-btn {
+  padding: 9px 18px;
+  border-radius: 14px;
+  border: none;
+
+  background: linear-gradient(120deg, var(--brand-primary), var(--brand-primary-2));
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(21,198,177,0.35);
+  transition: 0.35s ease;
+}
+
+/* ---------------- THEME TOGGLE ---------------- */
+.theme-toggle {
+  width: 42px;
+  height: 24px;
+  border-radius: 20px;
+}
+
+/* ---------------- HEART ICON ---------------- */
+.icon-btn {
+  font-size: 1.25rem;
+  padding: 7px 10px;
+}
+
+/* ---------------- MOBILE MENU ---------------- */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  color: var(--nav-text);
+}
+
+/* ======================================================
+   ✅ TABLET & MOBILE (880px)
+====================================================== */
+@media (max-width: 880px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+/* ======================================================
+   ✅ EXTRA SMALL MOBILE (300px–360px)
+====================================================== */
+@media screen and (max-width: 360px) {
+
+  :root {
+    --nav-height: 68px;
+  }
+
+  .navbar {
+    padding: 0 8px !important;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-login-btn {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 22px;
+  }
+
+  .icon-btn {
+    font-size: 1.1rem;
+    padding: 6px 8px;
+  }
+
+  .wish-count {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+}
+
+/* ======================================================
+   ✅ MOBILE DRAWER (UNCHANGED + SAFE)
+====================================================== */
+
+.mobile-drawer {
+  position: fixed;
+  right: -100%;
+  top: 0;
+
+  width: 240px;
+  height: 100vh;
+  padding: 22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  background: var(--drawer-bg-glass);
+  color: var(--drawer-text);
+
+  backdrop-filter: blur(16px) saturate(180%);
+  border-left: 1px solid var(--nav-border);
+
+  box-shadow: -4px 0 26px rgba(0,0,0,0.45);
+  transition: 0.35s ease;
+  z-index: 3000;
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+.drawer-close-btn {
+  align-self: flex-end;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--drawer-text);
+}
+/* =========================================================
+   ✅ FORCE FULL 320px SUPPORT — GLOBAL OVERRIDES
+========================================================= */
+@media screen and (max-width: 360px) {
+
+  /* ✅ Prevent horizontal overflow */
+  body, html {
+    overflow-x: hidden;
+  }
+
+  /* ✅ Fix hero search width */
+  .hero-search {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ✅ Fix filter popup overflow */
+  .filter-box {
+    width: 96vw !important;
+    right: 2vw !important;
+    left: unset !important;
+  }
+
+  /* ✅ Fix navbar inner squeeze */
+  .navbar-inner {
+    padding: 0 6px !important;
+  }
+
+  /* ✅ Fix category bar overflow */
+  .category-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ✅ Fix property cards */
+  .property-card,
+  .property-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ✅ Fix Buy/Rent/Sell buttons */
+  .hero-tabs,
+  .hero-tabs button {
+    width: 100%;
+  }
+
+  .hero-tabs {
+    flex-direction: column;
+  }
+
+  /* ✅ Fix any input overflow */
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  /* ✅ Fix filter row 2 columns */
+  .filter-row-2 {
+    flex-direction: column;
+  }
+
+  /* ✅ Reduce large paddings that break 320px */
+  .hero-content {
+    padding: 0 10px;
+  }
+  /* ======================================================
+   ✅ HIDE LOGO TEXT ON MOBILE ONLY
+====================================================== */
+
+  .nav-logo {
+    display: none !important;
+  }
+  
+
+}
+
+/* ======================================================
+   ✅ FIX: MOBILE DRAWER SHOULD OVERLAP NAVBAR
+====================================================== */
+
+/* Navbar stays below drawer */
+.navbar {
+  z-index: 2000 !important;
+}
+
+/* Mobile drawer ALWAYS on top */
+.mobile-drawer {
+  z-index: 5000 !important;
+}
+
+/* Extra safety for ultra small devices */
+@media (max-width: 360px) {
+  .mobile-drawer {
+    z-index: 9999 !important;
+  }
+}
+
+/* ======================================================
+   ✅ RED CLOSE BUTTON — TOP RIGHT CORNER FIX
+====================================================== */
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: none;
+
+  background: linear-gradient(135deg, #ff4d4d, #c71616);
+  color: white;
+
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.4);
+  transition: 0.25s ease;
+}
+
+/* Hover effect */
+.close-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #ff6b6b, #e11d48);
+}
+
+/* Active tap effect */
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* ✅ FIX: drawer inner padding so button doesn't clash */
+.mobile-drawer {
+  padding-top: 60px !important;
 }

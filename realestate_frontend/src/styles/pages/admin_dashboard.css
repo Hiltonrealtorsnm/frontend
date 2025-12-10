@@ -1,6 +1,6 @@
-/* ---------------------------------------
-   Dashboard Page Container
----------------------------------------- */
+/* ======================================================
+   DASHBOARD CONTAINER
+====================================================== */
 .admin-dash-container {
   padding: 25px;
   color: #e9ecf2;
@@ -14,212 +14,6 @@
   color: #ffffff;
 }
 
-/* ---------------------------------------
-   Stat Cards Grid
----------------------------------------- */
-.admin-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  margin-top: 15px;
-}
-
-/* ---------------------------------------
-   Neumorphic Card Style
----------------------------------------- */
-.dash-card {
-  padding: 28px 20px;
-  border-radius: 18px;
-
-  background: #1f2127;
-  box-shadow: 
-    10px 10px 25px rgba(0, 0, 0, 0.35),
-    -6px -6px 16px rgba(255, 255, 255, 0.05);
-
-  text-align: center;
-  transition: 0.25s ease-in-out;
-  cursor: pointer;
-}
-
-.dash-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    12px 12px 30px rgba(0, 0, 0, 0.45),
-    -6px -6px 20px rgba(255, 255, 255, 0.07);
-}
-
-.dash-card h2 {
-  font-size: 34px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.dash-card p {
-  font-size: 0.95rem;
-  color: #b4b8c4;
-}
-
-/* ---------------------------------------
-   Color Accents Per Card
----------------------------------------- */
-.dash-card.total {
-  border-left: 4px solid #4dc9ff;
-}
-
-.dash-card.pending {
-  border-left: 4px solid #facc15;
-}
-
-.dash-card.approved {
-  border-left: 4px solid #4ade80;
-}
-
-.dash-card.rejected {
-  border-left: 4px solid #ef4444;
-}
-
-.dash-card.enquiries {
-  border-left: 4px solid #a855f7;
-}
-
-/* ---------------------------------------
-   Buttons Area
----------------------------------------- */
-.admin-actions {
-  margin-top: 25px;
-  display: flex;
-  gap: 12px;
-}
-
-/* Primary button */
-.btn-view {
-  padding: 12px 22px;
-  background: #3c73ff;
-  border: none;
-  border-radius: 12px;
-  color: #ffffff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 4px 14px rgba(60, 115, 255, 0.35);
-}
-
-.btn-view:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.15);
-}
-
-/* Outline button */
-.btn-view.outline {
-  background: transparent;
-  border: 2px solid #3c73ff;
-  color: #3c73ff;
-  box-shadow: none;
-}
-
-.btn-view.outline:hover {
-  background: #3c73ff;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* ---------------------------------------
-   Animations
----------------------------------------- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------------------------------------
-   Mobile
----------------------------------------- */
-@media (max-width: 768px) {
-  .admin-actions {
-    flex-direction: column;
-  }
-  .btn-view {
-    width: 100%;
-  }
-}
-/* Base neumorphic card */
-.dash-card {
-  padding: 28px 20px;
-  border-radius: 18px;
-  background: #1f2127;
-  box-shadow: 
-    10px 10px 25px rgba(0, 0, 0, 0.35),
-    -6px -6px 16px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  transition: 0.35s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-/* BEFORE overlay for hover glow */
-.dash-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: 0.35s ease;
-  border-radius: inherit;
-  z-index: 0;
-}
-
-/* Keep content above the color layer */
-.dash-card * {
-  position: relative;
-  z-index: 2;
-}
-
-/* LEFT border colors */
-.dash-card.total { border-left: 4px solid #4dc9ff; }
-.dash-card.pending { border-left: 4px solid #facc15; }
-.dash-card.approved { border-left: 4px solid #4ade80; }
-.dash-card.rejected { border-left: 4px solid #ef4444; }
-.dash-card.enquiries { border-left: 4px solid #a855f7; }
-
-/* ON HOVER — FILL BACKGROUND COLOR BASED ON CARD TYPE */
-.dash-card.total:hover::before {
-  background: rgba(77, 201, 255, 0.15);
-  opacity: 1;
-}
-
-.dash-card.pending:hover::before {
-  background: rgba(250, 204, 21, 0.18);
-  opacity: 1;
-}
-
-.dash-card.approved:hover::before {
-  background: rgba(74, 222, 128, 0.18);
-  opacity: 1;
-}
-
-.dash-card.rejected:hover::before {
-  background: rgba(239, 68, 68, 0.17);
-  opacity: 1;
-}
-
-.dash-card.enquiries:hover::before {
-  background: rgba(168, 85, 247, 0.18);
-  opacity: 1;
-}
-
-/* Slight lift hover */
-.dash-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    12px 12px 30px rgba(0, 0, 0, 0.45),
-    -6px -6px 20px rgba(255, 255, 255, 0.07);
-}
-/* ----------- CONTAINER ----------- */
-.admin-dash-container {
-  padding: 25px;
-}
-
 .dash-title {
   font-size: 1.8rem;
   margin-bottom: 18px;
@@ -227,32 +21,78 @@
   color: #fff;
 }
 
-/* ----------- GRID ----------- */
+/* ======================================================
+   GRID
+====================================================== */
+.admin-cards,
 .dash-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 22px;
+  margin-top: 15px;
 }
 
-/* ----------- CARD BASE ----------- */
+/* ======================================================
+   NEUMORPHIC CARD BASE
+====================================================== */
 .dash-card {
   padding: 22px;
-  border-radius: 14px;
-
+  border-radius: 16px;
   background: #1f2128;
   border: 1px solid #2b2d35;
 
-  box-shadow: 6px 6px 16px rgba(0,0,0,0.4),
-              -6px -6px 16px rgba(255,255,255,0.05);
-  transition: 0.25s ease;
-  color: white;
+  box-shadow:
+    8px 8px 22px rgba(0,0,0,0.4),
+    -6px -6px 16px rgba(255,255,255,0.05);
+
+  text-align: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
 }
 
+/* Hover Glow Layer */
+.dash-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border-radius: inherit;
+  transition: 0.35s ease;
+  z-index: 0;
+}
+
+/* Keep Content Above Glow */
+.dash-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover Lift */
 .dash-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 18px rgba(90,120,255,0.45);
 }
 
+/* ======================================================
+   CARD COLORS
+====================================================== */
+.dash-card.total { border-left: 4px solid #4dc9ff; }
+.dash-card.pending { border-left: 4px solid #facc15; }
+.dash-card.approved { border-left: 4px solid #4ade80; }
+.dash-card.rejected { border-left: 4px solid #ef4444; }
+.dash-card.enquiries { border-left: 4px solid #a855f7; }
+
+.dash-card.total:hover::before { background: rgba(77,201,255,0.15); opacity: 1; }
+.dash-card.pending:hover::before { background: rgba(250,204,21,0.18); opacity: 1; }
+.dash-card.approved:hover::before { background: rgba(74,222,128,0.18); opacity: 1; }
+.dash-card.rejected:hover::before { background: rgba(239,68,68,0.17); opacity: 1; }
+.dash-card.enquiries:hover::before { background: rgba(168,85,247,0.18); opacity: 1; }
+
+/* ======================================================
+   CARD TEXT
+====================================================== */
 .dash-card h2 {
   font-size: 2rem;
   font-weight: 700;
@@ -260,24 +100,21 @@
 }
 
 .dash-card p {
+  font-size: 0.95rem;
   opacity: 0.7;
-  font-size: 0.9rem;
 }
 
-/* COLORS */
-.total { border-left: 4px solid #60a5fa; }
-.approved { border-left: 4px solid #22c55e; }
-.pending { border-left: 4px solid #eab308; }
-.rejected { border-left: 4px solid #ef4444; }
-.enquiries { border-left: 4px solid #a855f7; }
-
-/* ----------- BUTTONS ----------- */
+/* ======================================================
+   BUTTONS
+====================================================== */
+.admin-actions,
 .dash-actions {
   margin-top: 25px;
   display: flex;
   gap: 12px;
 }
 
+.btn-view,
 .dash-btn {
   padding: 12px 20px;
   border-radius: 10px;
@@ -286,69 +123,121 @@
   transition: 0.25s ease;
 }
 
-.dash-btn.primary {
-  background: #3b82f6;
+.btn-view {
+  background: #3c73ff;
   border: none;
   color: white;
+  box-shadow: 0 4px 14px rgba(60,115,255,0.35);
 }
 
-.dash-btn.primary:hover {
-  background: #2563eb;
+.btn-view:hover {
   transform: translateY(-2px);
+  filter: brightness(1.15);
 }
 
+.btn-view.outline,
 .dash-btn.ghost {
   background: transparent;
   border: 1px solid #4b5563;
   color: #cbd5e1;
 }
 
+.btn-view.outline:hover,
 .dash-btn.ghost:hover {
-  border-color: #94a3b8;
+  background: #3c73ff;
+  color: white;
   transform: translateY(-2px);
 }
 
-/* ----------- RESPONSIVE ----------- */
-@media (max-width: 600px) {
+/* ======================================================
+   ANIMATION
+====================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================================
+   MOBILE (UNDER 768px)
+====================================================== */
+@media (max-width: 768px) {
+  .admin-actions,
+  .dash-actions {
+    flex-direction: column;
+  }
+
+  .btn-view,
+  .dash-btn {
+    width: 100%;
+  }
+
   .dash-grid {
     grid-template-columns: 1fr;
   }
 }
-/* ---------------------------------------
-   Ultra Small Devices (300px–360px)
----------------------------------------- */
+
+/* ======================================================
+   ✅ ULTRA SMALL DEVICES (300px–360px)
+====================================================== */
 @media (max-width: 360px) {
+
   .admin-dash-container {
     padding: 14px;
   }
 
-  .dash-title,
   .admin-dash-container h1 {
     font-size: 1.4rem;
     text-align: center;
   }
 
+  .dash-title {
+    text-align: center;
+    font-size: 1.35rem;
+  }
+
   .dash-card {
-    padding: 18px;
-    border-radius: 14px;
+    padding: 16px;
+    border-radius: 12px;
   }
 
   .dash-card h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .dash-card p {
     font-size: 0.82rem;
   }
 
-  .admin-actions,
-  .dash-actions {
-    gap: 10px;
-  }
-
   .btn-view,
   .dash-btn {
     padding: 10px 14px;
     font-size: 0.85rem;
+  }
+}
+
+/* ======================================================
+   ✅ MOBILE Z-INDEX FIX — DASHBOARD ALWAYS ON TOP
+====================================================== */
+@media (max-width: 768px) {
+
+  .dashboard,
+  .dashboard-header,
+  .dashboard-navbar,
+  .mobile-dashboard {
+    position: relative;
+    z-index: 9999 !important;
+  }
+
+  .filter-panel,
+  .filter-button,
+  .mobile-filter,
+  .filter-wrapper {
+    position: relative;
+    z-index: 100 !important;
+  }
+
+  .filter-panel[style*="fixed"],
+  .filter-button[style*="fixed"] {
+    z-index: 80 !important;
   }
 }

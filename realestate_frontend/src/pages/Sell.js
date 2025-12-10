@@ -20,7 +20,9 @@ export default function Sell() {
   const [property, setProperty] = useState({
     title: "",
     description: "",
-    price: "",
+    price: "",       // SALE
+    rentPrice: "",   // RENT
+    deposit: "",     // RENT
     bedrooms: "",
     bathrooms: "",
     areaSqft: "",
@@ -38,88 +40,104 @@ export default function Sell() {
   });
 
   const [images, setImages] = useState([]);
-
-  // 🚫 Prevent Duplicate Submit
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  /* ------------------------------------------------------
-      VALIDATION
-  ------------------------------------------------------ */
+  /* ---------------- VALIDATION ---------------- */
   const validate = () => {
+    if (!seller.sellerName.trim()) return "Seller name is required!";
     if (!seller.phone.trim()) return "Seller phone is required!";
+    if (!seller.email.trim()) return "Seller email is required!";
+
     if (!property.title.trim()) return "Property title is required!";
     if (!property.description.trim()) return "Description required!";
-    if (!property.price) return "Price required!";
     if (!property.bedrooms) return "Bedrooms required!";
     if (!property.bathrooms) return "Bathrooms required!";
+    if (!property.areaSqft) return "Area is required!";
+
+    if (property.listingType === "sale" && !property.price)
+      return "Sale price is required!";
+
+    if (property.listingType === "rent") {
+      if (!property.rentPrice) return "Monthly rent is required!";
+      if (!property.deposit) return "Deposit amount is required!";
+    }
 
     const a = property.address;
+    if (!a.houseNo.trim()) return "House No required!";
+    if (!a.street.trim()) return "Street required!";
+    if (!a.area.trim()) return "Area required!";
     if (!a.city.trim()) return "City required!";
     if (!a.state.trim()) return "State required!";
     if (!a.pincode.trim()) return "Pincode required!";
 
+    if (images.length === 0) return "At least 1 image is required!";
+
     return null;
   };
 
-  /* ------------------------------------------------------
-      SUBMIT PROPERTY (Prevent Multiple Submissions)
-  ------------------------------------------------------ */
+  /* ---------------- SUBMIT ---------------- */
   const handleSubmit = async () => {
-    if (isSubmitting) return; // 🔒 block extra clicks
+    if (isSubmitting) return;
 
     const err = validate();
     if (err) return alert(err);
 
-    setIsSubmitting(true); // ⏳ start loading
+    setIsSubmitting(true);
 
     try {
-      // 1️⃣ UPSERT SELLER
       const sellerRes = await addOrUpdateSeller(seller);
       const sellerId = sellerRes.data.sellerId;
 
-      // 2️⃣ Prepare property payload
       const finalProperty = {
         ...property,
         seller: { sellerId },
-        price: Number(property.price),
+
+        price:
+          property.listingType === "sale"
+            ? Number(property.price)
+            : Number(property.rentPrice),
+
+        rentPrice:
+          property.listingType === "rent"
+            ? Number(property.rentPrice)
+            : null,
+
+        deposit:
+          property.listingType === "rent"
+            ? Number(property.deposit)
+            : null,
+
         bedrooms: Number(property.bedrooms),
         bathrooms: Number(property.bathrooms),
         areaSqft: Number(property.areaSqft),
       };
 
-      // 3️⃣ CREATE PROPERTY
       const propertyRes = await addProperty(finalProperty);
       const propertyId = propertyRes.data.propertyId;
 
-      // 4️⃣ UPLOAD IMAGES
       if (images.length > 0) {
         const files = images.map((i) => i.file);
         await uploadPropertyImages(propertyId, files);
       }
 
-      alert("Property submitted successfully!");
+      alert("✅ Property submitted successfully!");
       window.location.href = "/properties";
 
     } catch (error) {
       console.error("Submit error:", error);
-      alert("Something went wrong while submitting.");
+      alert("❌ Something went wrong while submitting.");
     } finally {
-      setIsSubmitting(false); // ✔ unlock button
+      setIsSubmitting(false);
     }
   };
 
-  /* ------------------------------------------------------
-      UI RENDER
-  ------------------------------------------------------ */
+  /* ---------------- UI ---------------- */
   return (
     <div className="sell-wrapper">
-
       <h1 className="sell-title">List Your Property</h1>
 
       <div className="sell-card">
-        {/* ---------------------------------------------- */}
-        {/* LEFT COLUMN — PROPERTY DETAILS */}
-        {/* ---------------------------------------------- */}
+        {/* ------------ PROPERTY INFO ------------ */}
         <div className="sell-col">
           <h3 className="section-label">Property Info</h3>
 
@@ -142,57 +160,80 @@ export default function Sell() {
 
           <div className="form-group">
             <label>Title</label>
-            <input
-              placeholder="Property title"
-              value={property.title}
-              onChange={(e) =>
-                setProperty({ ...property, title: e.target.value })
-              }
+            <input required value={property.title}
+              onChange={(e) => setProperty({ ...property, title: e.target.value })}
             />
           </div>
 
           <div className="form-group">
             <label>Description</label>
-            <textarea
-              placeholder="Write description"
-              value={property.description}
-              onChange={(e) =>
-                setProperty({ ...property, description: e.target.value })
-              }
+            <textarea required value={property.description}
+              onChange={(e) => setProperty({ ...property, description: e.target.value })}
             />
           </div>
 
+          {/* ----- SALE / RENT LOGIC ----- */}
           <div className="form-row">
-            <div className="form-group half">
-              <label>Price</label>
-              <input
-                type="number"
-                value={property.price}
-                onChange={(e) =>
-                  setProperty({ ...property, price: e.target.value })
-                }
-              />
-            </div>
-
             <div className="form-group half">
               <label>Listing Type</label>
               <select
                 value={property.listingType}
                 onChange={(e) =>
-                  setProperty({ ...property, listingType: e.target.value })
+                  setProperty({
+                    ...property,
+                    listingType: e.target.value,
+                    price: "",
+                    rentPrice: "",
+                    deposit: "",
+                  })
                 }
               >
                 <option value="sale">Sale</option>
                 <option value="rent">Rent</option>
               </select>
             </div>
+
+            {property.listingType === "sale" && (
+              <div className="form-group half">
+                <label>Sale Price</label>
+                <input required type="number"
+                  value={property.price}
+                  onChange={(e) =>
+                    setProperty({ ...property, price: e.target.value })
+                  }
+                />
+              </div>
+            )}
+
+            {property.listingType === "rent" && (
+              <>
+                <div className="form-group half">
+                  <label>Monthly Rent</label>
+                  <input required type="number"
+                    value={property.rentPrice}
+                    onChange={(e) =>
+                      setProperty({ ...property, rentPrice: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="form-group half">
+                  <label>Deposit</label>
+                  <input required type="number"
+                    value={property.deposit}
+                    onChange={(e) =>
+                      setProperty({ ...property, deposit: e.target.value })
+                    }
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           <div className="form-row">
             <div className="form-group half">
               <label>Bedrooms</label>
-              <input
-                type="number"
+              <input required type="number"
                 value={property.bedrooms}
                 onChange={(e) =>
                   setProperty({ ...property, bedrooms: e.target.value })
@@ -202,8 +243,7 @@ export default function Sell() {
 
             <div className="form-group half">
               <label>Bathrooms</label>
-              <input
-                type="number"
+              <input required type="number"
                 value={property.bathrooms}
                 onChange={(e) =>
                   setProperty({ ...property, bathrooms: e.target.value })
@@ -214,8 +254,7 @@ export default function Sell() {
 
           <div className="form-group">
             <label>Area (sqft)</label>
-            <input
-              type="number"
+            <input required type="number"
               value={property.areaSqft}
               onChange={(e) =>
                 setProperty({ ...property, areaSqft: e.target.value })
@@ -223,22 +262,19 @@ export default function Sell() {
             />
           </div>
 
+          {/* ------------ ADDRESS ------------ */}
           <h3 className="section-label small">Address</h3>
-
           <div className="address-grid">
             {["houseNo", "street", "area", "city", "state", "pincode"].map(
               (field) => (
                 <div className="form-group" key={field}>
                   <label>{field.toUpperCase()}</label>
-                  <input
+                  <input required
                     value={property.address[field]}
                     onChange={(e) =>
                       setProperty({
                         ...property,
-                        address: {
-                          ...property.address,
-                          [field]: e.target.value,
-                        },
+                        address: { ...property.address, [field]: e.target.value },
                       })
                     }
                   />
@@ -248,16 +284,13 @@ export default function Sell() {
           </div>
         </div>
 
-        {/* ---------------------------------------------- */}
-        {/* RIGHT COLUMN — SELLER INFO + IMAGES */}
-        {/* ---------------------------------------------- */}
+        {/* ------------ SELLER INFO ------------ */}
         <div className="sell-col">
           <h3 className="section-label">Seller Info</h3>
 
           <div className="form-group">
             <label>Full Name</label>
-            <input
-              value={seller.sellerName}
+            <input required value={seller.sellerName}
               onChange={(e) =>
                 setSeller({ ...seller, sellerName: e.target.value })
               }
@@ -266,8 +299,7 @@ export default function Sell() {
 
           <div className="form-group">
             <label>Phone *</label>
-            <input
-              value={seller.phone}
+            <input required value={seller.phone}
               onChange={(e) =>
                 setSeller({ ...seller, phone: e.target.value })
               }
@@ -276,8 +308,7 @@ export default function Sell() {
 
           <div className="form-group">
             <label>Email</label>
-            <input
-              value={seller.email}
+            <input required type="email" value={seller.email}
               onChange={(e) =>
                 setSeller({ ...seller, email: e.target.value })
               }
@@ -297,12 +328,10 @@ export default function Sell() {
             </select>
           </div>
 
+          {/* ------------ IMAGES ------------ */}
           <h3 className="section-label small">Upload Images</h3>
 
-          <input
-            type="file"
-            multiple
-            accept="image/*"
+          <input type="file" multiple required accept="image/*"
             className="file-input"
             onChange={(e) => {
               const files = [...e.target.files].map((file) => ({
@@ -313,26 +342,9 @@ export default function Sell() {
             }}
           />
 
-          <div className="image-grid" onDragOver={(e) => e.preventDefault()}>
+          <div className="image-grid">
             {images.map((img, index) => (
-              <div
-                key={index}
-                className="img-box"
-                draggable
-                onDragStart={(e) =>
-                  e.dataTransfer.setData("dragIndex", index)
-                }
-                onDrop={(e) => {
-                  const from = Number(e.dataTransfer.getData("dragIndex"));
-                  const to = index;
-
-                  const arr = [...images];
-                  const moved = arr.splice(from, 1)[0];
-                  arr.splice(to, 0, moved);
-
-                  setImages(arr);
-                }}
-              >
+              <div key={index} className="img-box">
                 <img src={img.url} alt="" />
                 <button
                   className="remove-img"
@@ -347,9 +359,7 @@ export default function Sell() {
           </div>
         </div>
 
-        {/* ---------------------------------------------- */}
-        {/* SUBMIT BUTTON — NOW HAS LOADING STATE */}
-        {/* ---------------------------------------------- */}
+        {/* ------------ SUBMIT ------------ */}
         <div className="submit-row">
           <button
             className="submit-btn"
@@ -359,7 +369,6 @@ export default function Sell() {
             {isSubmitting ? "Submitting..." : "Submit Property"}
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -13,6 +13,10 @@ export default function AdminPropertyView() {
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);
 
+  // ✅ IMAGE PREVIEW STATES
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [touchStartX, setTouchStartX] = useState(0);
+
   const loadData = async () => {
     try {
       const res = await getProperty(id);
@@ -28,6 +32,32 @@ export default function AdminPropertyView() {
 
   if (!property) return <AdminLayout>Loading...</AdminLayout>;
 
+  // ✅ IMAGE MODAL HANDLERS
+  const openPreview = (index) => {
+    setActiveIndex(index);
+  };
+
+  const closePreview = () => {
+    setActiveIndex(null);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+
+    if (diff > 50 && activeIndex < property.images.length - 1) {
+      setActiveIndex((prev) => prev + 1); // swipe left → next
+    }
+
+    if (diff < -50 && activeIndex > 0) {
+      setActiveIndex((prev) => prev - 1); // swipe right → prev
+    }
+  };
+
+  // ✅ APPROVE / REJECT HANDLERS
   const handleApprove = async () => {
     try {
       await approveProperty(property.propertyId);
@@ -64,11 +94,16 @@ export default function AdminPropertyView() {
 
         <div className="pv-top">
 
-          {/* PROPERTY IMAGES */}
+          {/* ✅ PROPERTY IMAGES WITH TAP TO FULLSCREEN */}
           <div className="pv-images">
             {property.images?.length > 0 ? (
-              property.images.map((img) => (
-                <img key={img.imageId} src={img.imageUrl} alt="property" />
+              property.images.map((img, index) => (
+                <img
+                  key={img.imageId}
+                  src={img.imageUrl}
+                  alt="property"
+                  onClick={() => openPreview(index)}
+                />
               ))
             ) : (
               <p>No images uploaded</p>
@@ -101,12 +136,16 @@ export default function AdminPropertyView() {
             <p><b>Furnishing:</b> {property.furnishing}</p>
             <p><b>Type:</b> {property.propertyType}</p>
 
-            {/* ACTION BUTTONS */}
+            {/* ✅ ACTION BUTTONS */}
             <div className="pv-btns">
               {property.status === "pending" && (
                 <>
-                  <button className="btn-approve" onClick={handleApprove}>Approve</button>
-                  <button className="btn-reject" onClick={handleReject}>Reject</button>
+                  <button className="btn-approve" onClick={handleApprove}>
+                    Approve
+                  </button>
+                  <button className="btn-reject" onClick={handleReject}>
+                    Reject
+                  </button>
                   <button
                     className="btn-edit"
                     onClick={() =>
@@ -123,7 +162,6 @@ export default function AdminPropertyView() {
                   <button className="btn-reject" onClick={handleReject}>
                     Move to REJECTED
                   </button>
-
                   <button
                     className="btn-edit"
                     onClick={() =>
@@ -140,7 +178,6 @@ export default function AdminPropertyView() {
                   <button className="btn-approve" onClick={handleApprove}>
                     Move to APPROVED
                   </button>
-
                   <button
                     className="btn-edit"
                     onClick={() =>
@@ -155,11 +192,11 @@ export default function AdminPropertyView() {
           </div>
         </div>
 
-        {/* DESCRIPTION */}
+        {/* ✅ DESCRIPTION */}
         <h3>Description</h3>
         <p className="pv-description">{property.description}</p>
 
-        {/* ADDRESS + SELLER DETAILS SIDE BY SIDE */}
+        {/* ✅ ADDRESS + SELLER */}
         <div className="address-seller-wrapper">
 
           {/* ADDRESS */}
@@ -192,19 +229,38 @@ export default function AdminPropertyView() {
               >
                 ✉️ Email Seller
               </a>
+
               <a
                 href={`whatsapp://send?phone=91${property.seller.phone}&text=Hi ${property.seller.sellerName}, I am contacting you regarding your property: ${property.title}`}
                 className="seller-whatsapp-btn"
               >
                 🟢 WhatsApp
               </a>
-
-
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* ✅ FULLSCREEN IMAGE MODAL WITH SWIPE */}
+      {activeIndex !== null && property.images?.length > 0 && (
+        <div className="pv-modal" onClick={closePreview}>
+          <img
+            src={property.images[activeIndex]?.imageUrl}
+            className="pv-modal-img"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onClick={(e) => e.stopPropagation()}
+            alt="preview"
+          />
+
+          <button
+            className="pv-close-btn"
+            onClick={closePreview}
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </AdminLayout>
   );
 }

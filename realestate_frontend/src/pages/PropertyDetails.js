@@ -87,7 +87,7 @@ export default function PropertyDetails() {
             {property.title} — #{property.propertyId}
           </h2>
 
-          <p className="toko-rating">⭐ 4.8 · Excellent Property</p>
+          <p className="toko-rating">{property.description}</p>
 
           <h1 className="toko-price">
             ₹{" "}

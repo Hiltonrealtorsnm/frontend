@@ -78,7 +78,7 @@ export default function Navbar() {
               <FaBars size={18} />
             </button>
 
-            <Link to="/" className="nav-logo">RealEstate</Link>
+            <Link to="/" className="nav-logo">HiltonRealtorsNM</Link>
           </div>
 
           {/* Desktop Links */}

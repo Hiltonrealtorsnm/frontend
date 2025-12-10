@@ -306,3 +306,184 @@
     flex-direction: column;
   }
 }
+
+/* ======================================================
+   ✅ MOBILE COMPACT MODE (FULLY OPTIMIZED)
+====================================================== */
+
+@media (max-width: 600px) {
+
+  .tokopedia-page {
+    padding: calc(var(--nav-height) + 10px) 12px 20px;
+  }
+
+  .toko-back-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .toko-product-card {
+    padding: 14px;
+    gap: 16px;
+    border-radius: 14px;
+  }
+
+  /* ---------- IMAGE AREA ---------- */
+
+  .toko-main-img {
+    height: 230px;
+    border-radius: 12px;
+  }
+
+  .toko-thumb-strip {
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .toko-thumb {
+    width: 64px;
+    height: 52px;
+    border-radius: 8px;
+  }
+
+  /* ---------- TEXT ---------- */
+
+  .toko-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .toko-rating {
+    font-size: 0.88rem;
+  }
+
+  .toko-price {
+    font-size: 1.7rem;
+  }
+
+  /* ---------- WISHLIST + PRICE ROW ---------- */
+
+  .toko-right {
+    gap: 14px;
+  }
+
+  .toko-wishlist-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  /* ---------- DETAILS BOX ---------- */
+
+  .toko-content-box {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .toko-info-col p {
+    font-size: 0.9rem;
+  }
+
+  .toko-desc {
+    font-size: 0.95rem;
+  }
+
+  /* ---------- CONTACT BUTTON ---------- */
+
+  .toko-contact-btn {
+    padding: 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+}
+/* ======================================================
+   ✅ ULTRA SMALL MOBILE SUPPORT — 300px WIDTH
+====================================================== */
+
+@media (max-width: 360px) {
+
+  .tokopedia-page {
+    padding: calc(var(--nav-height) + 6px) 8px 14px;
+  }
+
+  .toko-back-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .toko-product-card {
+    padding: 10px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  /* ---------- IMAGES ---------- */
+
+  .toko-main-img {
+    height: 190px;
+    border-radius: 10px;
+  }
+
+  .toko-thumb-strip {
+    gap: 6px;
+  }
+
+  .toko-thumb {
+    width: 52px;
+    height: 44px;
+    border-radius: 6px;
+  }
+
+  /* ---------- TEXT SCALE ---------- */
+
+  .toko-title {
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+
+  .toko-rating {
+    font-size: 0.8rem;
+  }
+
+  .toko-price {
+    font-size: 1.45rem;
+  }
+
+  /* ---------- WISHLIST ---------- */
+
+  .toko-wishlist-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  /* ---------- DETAILS BOX ---------- */
+
+  .toko-content-box {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .toko-info-col p {
+    font-size: 0.82rem;
+    margin: 4px 0;
+  }
+
+  .toko-desc {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- CONTACT BUTTON ---------- */
+
+  .toko-contact-btn {
+    padding: 12px;
+    font-size: 0.9rem;
+    border-radius: 9px;
+  }
+}

@@ -34,12 +34,11 @@
 .filter-bar select {
   padding: 10px 12px;
   border-radius: 8px;
-
   border: 1px solid #2d2f36;
   background: #26272e;
   color: #e5e7eb;
-
   transition: 0.2s;
+  min-width: 140px;
 }
 
 .filter-bar input:focus,
@@ -54,7 +53,6 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-
   transition: 0.2s;
   font-weight: 600;
 }
@@ -64,26 +62,14 @@
   color: #fff;
 }
 
-.filter-btn.apply:hover {
-  background: #2563eb;
-}
-
 .filter-btn.reset {
   background: #374151;
   color: #fff;
 }
 
-.filter-btn.reset:hover {
-  background: #4b5563;
-}
-
 .filter-btn.export {
   background: #10b981;
   color: #fff;
-}
-
-.filter-btn.export:hover {
-  background: #059669;
 }
 
 
@@ -95,7 +81,6 @@
   padding: 18px;
   border-radius: 14px;
   margin-top: 20px;
-
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.40);
 }
 
@@ -116,7 +101,6 @@
   border-collapse: collapse;
 }
 
-/* ⭐ FINAL DARK BLUE HEADER */
 .admin-table thead {
   background: #1e293b;
   border-bottom: 2px solid #334155;
@@ -125,19 +109,11 @@
 .admin-table th {
   padding: 12px;
   text-align: left;
-  color: #2b3542;
+  color: #cbd5f5;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  user-select: none;
-
-  transition: 0.25s;
-  background: transparent;
-}
-
-.admin-table th:hover {
-  background: #24354d;
 }
 
 .admin-table td {
@@ -145,13 +121,11 @@
   color: #e5e7eb;
   border-bottom: 1px solid #2c2d33;
   font-size: 0.95rem;
-
-  transition: 0.25s;
 }
 
 
 /* ==========================================================
-   ROW HOVER — highlight + LEFT BLUE BORDER
+   ROW HOVER
 ========================================================== */
 .admin-table tbody tr {
   transition: 0.22s ease;
@@ -161,7 +135,6 @@
 .admin-table tbody tr:hover {
   background: rgba(59, 130, 246, 0.10);
   border-left: 4px solid #3b82f6;
-  transform: translateX(2px);
 }
 
 
@@ -176,17 +149,9 @@
   font-weight: 600;
 }
 
-.status-approved {
-  background: #10b981;
-}
-
-.status-pending {
-  background: #f59e0b;
-}
-
-.status-rejected {
-  background: #ef4444;
-}
+.status-approved { background: #10b981; }
+.status-pending { background: #f59e0b; }
+.status-rejected { background: #ef4444; }
 
 
 /* ==========================================================
@@ -199,34 +164,13 @@
   cursor: pointer;
   border: none;
   margin-right: 6px;
-
   color: #fff;
   transition: 0.2s;
 }
 
-.btn-approve {
-  background: #10b981;
-}
-
-.btn-approve:hover {
-  background: #059669;
-}
-
-.btn-reject {
-  background: #f43f5e;
-}
-
-.btn-reject:hover {
-  background: #e11d48;
-}
-
-.btn-delete {
-  background: #6b7280;
-}
-
-.btn-delete:hover {
-  background: #4b5563;
-}
+.btn-approve { background: #10b981; }
+.btn-reject { background: #f43f5e; }
+.btn-delete { background: #6b7280; }
 
 
 /* ==========================================================
@@ -238,18 +182,13 @@
   font-weight: 500;
 }
 
-.admin-view-link:hover {
-  text-decoration: underline;
-}
-
 
 /* ==========================================================
-   RESPONSIVE TABLE (Mobile)
+   RESPONSIVE TABLE (MOBILE)
 ========================================================== */
 @media (max-width: 850px) {
-  .admin-table thead {
-    display: none;
-  }
+
+  .admin-table thead { display: none; }
 
   .admin-table tr {
     display: block;
@@ -266,22 +205,19 @@
     border-bottom: 1px solid #334155;
   }
 
-  .admin-table td:last-child {
-    border-bottom: none;
-  }
-
   .admin-table td::before {
     content: attr(data-label);
     color: #94a3b8;
     font-weight: 600;
   }
 }
+
+
 /* ==========================================================
-   ULTRA SMALL MOBILE (300px–360px)
+   ✅ ULTRA SMALL MOBILE (300px–360px)
 ========================================================== */
 @media (max-width: 360px) {
 
-  /* Page padding tighten */
   .admin-properties-container {
     padding: 12px;
   }
@@ -291,101 +227,53 @@
     text-align: center;
   }
 
-  /* -------- FILTER BAR -------- */
   .filter-bar {
     padding: 10px;
     gap: 8px;
   }
 
   .filter-bar input,
-  .filter-bar select {
-    width: 100%;          /* stack properly */
-    padding: 8px 10px;
-    font-size: 0.85rem;
-  }
-
+  .filter-bar select,
   .filter-btn {
     width: 100%;
-    padding: 9px 10px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    padding: 8px;
   }
 
-  /* -------- TABLE WRAPPER -------- */
   .table-wrap {
     padding: 12px;
   }
 
-  /* -------- MOBILE TABLE CARDS -------- */
   .admin-table tr {
     padding: 10px;
     border-radius: 10px;
   }
 
   .admin-table td {
-    font-size: 0.8rem;
-    padding: 8px 0;
+    font-size: 0.78rem;
+    padding: 7px 0;
   }
 
-  .admin-table td::before {
-    font-size: 0.75rem;
-  }
-
-  /* -------- STATUS BADGES -------- */
   .status-badge {
     font-size: 0.65rem;
     padding: 3px 8px;
   }
 
-  /* -------- ACTION BUTTONS -------- */
-  .action-btn {
-    font-size: 0.7rem;
-    padding: 5px 7px;
-    margin-bottom: 4px;
-  }
-
-  /* -------- LINKS -------- */
-  .admin-view-link {
-    font-size: 0.8rem;
-  }
-}
-
-
-/* ==========================================================
-   FIX: 300px–360px ACTION BUTTON OVERFLOW
-========================================================== */
-@media (max-width: 360px) {
-
-  /* Stack action buttons vertically */
+  /* ✅ STACK ACTION BUTTONS */
   .admin-table td:last-child,
-  .mobile-actions,
-  .action-btn-group,
-  .action-buttons {
+  .mobile-actions {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    align-items: stretch;
   }
 
-  /* Force all buttons to fit width */
-  .action-btn,
-  .btn-approve,
-  .btn-reject,
-  .btn-delete {
+  .action-btn {
     width: 100%;
-    padding: 8px 10px;
-    font-size: 0.75rem;
-    border-radius: 6px;
+    font-size: 0.72rem;
+    padding: 7px;
   }
 
-  /* Fix status + view row spacing */
-  .status-badge {
-    display: inline-block;
-    margin-bottom: 6px;
+  .admin-view-link {
+    font-size: 0.78rem;
   }
-
-  /* Prevent card horizontal overflow */
-  .admin-table tr {
-    overflow: hidden;
-  }
-
 }

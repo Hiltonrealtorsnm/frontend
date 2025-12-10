@@ -49,7 +49,7 @@ export default function Projects() {
           const firstImage =
             p.images?.length > 0
               ? p.images[0].imageUrl
-              : "https://picsum.photos/600/400";
+              : "https://via.placeholder.com/600x400?text=No+Image";
 
           const projectStatus = p.status?.replace("_", " ") || "Unknown";
 
@@ -82,9 +82,7 @@ export default function Projects() {
                   {p.location || "Location not available"}
                 </p>
 
-                <p className="project-type">
-                  {p.type || "Type not mentioned"}
-                </p>
+                <p className="project-type">{p.type || "Type not mentioned"}</p>
 
                 <div className="project-price">
                   ₹ {p.priceRange || p.priceBigint || "N/A"}

@@ -32,6 +32,7 @@
   font-weight: 600;
 }
 
+
 /* ------------------------------
    TOP SECTION
 ------------------------------ */
@@ -41,12 +42,15 @@
   flex-wrap: wrap;
 }
 
-/* PROPERTY IMAGES */
+
+/* ------------------------------
+   PROPERTY IMAGES
+------------------------------ */
 .pv-images {
   width: 55%;
-  min-width: 340px;
+  min-width: 260px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
 }
 
@@ -57,11 +61,13 @@
   border-radius: 10px;
   box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
   transition: 0.25s;
+  cursor: pointer;
 }
 
 .pv-images img:hover {
   transform: scale(1.05);
 }
+
 
 /* ------------------------------
    PROPERTY INFO RIGHT CARD
@@ -81,9 +87,13 @@
 .pv-info p {
   font-size: 15px;
   margin: 6px 0;
+  word-break: break-word;
 }
 
-/* STATUS BADGES */
+
+/* ------------------------------
+   STATUS BADGES
+------------------------------ */
 .pv-status {
   padding: 4px 10px;
   border-radius: 6px;
@@ -91,17 +101,10 @@
   color: #fff;
 }
 
-.pv-status.pending {
-  background: orange;
-}
+.pv-status.pending { background: orange; }
+.pv-status.approved { background: #28a745; }
+.pv-status.rejected { background: #dc3545; }
 
-.pv-status.approved {
-  background: #28a745;
-}
-
-.pv-status.rejected {
-  background: #dc3545;
-}
 
 /* ------------------------------
    ACTION BUTTONS
@@ -121,28 +124,18 @@
   color: white;
   font-size: 14px;
   transition: 0.2s;
+  width: auto;
 }
 
-.btn-approve {
-  background: #28a745;
-}
-.btn-approve:hover {
-  background: #218838;
-}
+.btn-approve { background: #28a745; }
+.btn-approve:hover { background: #218838; }
 
-.btn-reject {
-  background: #dc3545;
-}
-.btn-reject:hover {
-  background: #c82333;
-}
+.btn-reject { background: #dc3545; }
+.btn-reject:hover { background: #c82333; }
 
-.btn-edit {
-  background: #0d6efd;
-}
-.btn-edit:hover {
-  background: #0a58ca;
-}
+.btn-edit { background: #0d6efd; }
+.btn-edit:hover { background: #0a58ca; }
+
 
 /* ------------------------------
    DESCRIPTION CARD
@@ -154,7 +147,9 @@
   margin-bottom: 25px;
   line-height: 1.5;
   box-shadow: 0px 1px 8px rgba(0,0,0,0.1);
+  word-break: break-word;
 }
+
 
 /* ------------------------------
    ADDRESS + SELLER SIDE-BY-SIDE
@@ -166,7 +161,6 @@
   margin-top: 25px;
 }
 
-/* LEFT — ADDRESS CARD */
 .address-box,
 .seller-box {
   width: 50%;
@@ -176,6 +170,7 @@
   box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
 }
 
+
 /* ------------------------------
    SELLER CONTACT BUTTONS
 ------------------------------ */
@@ -183,9 +178,9 @@
   display: flex;
   gap: 12px;
   margin-top: 15px;
+  flex-wrap: wrap;
 }
 
-/* BUTTONS */
 .seller-call-btn,
 .seller-mail-btn,
 .seller-whatsapp-btn {
@@ -195,36 +190,31 @@
   text-decoration: none;
   font-weight: 600;
   transition: 0.2s;
+  display: inline-block;
 }
 
-/* CALL (GREEN) */
-.seller-call-btn {
-  background: #28a745;
-}
-.seller-call-btn:hover {
-  background: #1f7a34;
-}
+/* CALL */
+.seller-call-btn { background: #28a745; }
+.seller-call-btn:hover { background: #1f7a34; }
 
-/* EMAIL (BLUE) */
-.seller-mail-btn {
-  background: #0d6efd;
-}
-.seller-mail-btn:hover {
-  background: #0a58ca;
-}
+/* EMAIL */
+.seller-mail-btn { background: #0d6efd; }
+.seller-mail-btn:hover { background: #0a58ca; }
 
-/* WHATSAPP (WHATSAPP GREEN) */
-.seller-whatsapp-btn {
-  background: #25d366;
-}
-.seller-whatsapp-btn:hover {
-  background: #1ebe5b;
-}
+/* WHATSAPP */
+.seller-whatsapp-btn { background: #25d366; }
+.seller-whatsapp-btn:hover { background: #1ebe5b; }
 
-/* ------------------------------
-   RESPONSIVE STYLING
------------------------------- */
+
+/* ==========================================================
+   ✅ MOBILE (UNDER 900px)
+========================================================== */
 @media (max-width: 900px) {
+
+  .property-view-container {
+    padding: 16px;
+  }
+
   .pv-top {
     flex-direction: column;
   }
@@ -232,6 +222,11 @@
   .pv-images,
   .pv-info {
     width: 100%;
+    min-width: 100%;
+  }
+
+  .pv-images {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 
   .address-seller-wrapper {
@@ -244,6 +239,116 @@
   }
 
   .seller-contact-btns {
-    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .seller-call-btn,
+  .seller-mail-btn,
+  .seller-whatsapp-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================
+   ✅ ULTRA SMALL MOBILE (300px–360px)
+========================================================== */
+@media (max-width: 360px) {
+
+  .property-view-container {
+    padding: 10px;
+  }
+
+  .property-view-container h1 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .pv-back-btn {
+    width: 100%;
+    padding: 9px;
+    font-size: 0.85rem;
+  }
+
+  .pv-images {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .pv-images img {
+    height: 95px;
+    border-radius: 8px;
+  }
+
+  .pv-info {
+    padding: 14px;
+  }
+
+  .pv-info p {
+    font-size: 0.85rem;
+  }
+
+  .pv-btns button {
+    width: 100%;
+    font-size: 0.82rem;
+    padding: 9px;
+  }
+
+  .pv-description {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .seller-call-btn,
+  .seller-mail-btn,
+  .seller-whatsapp-btn {
+    font-size: 0.82rem;
+    padding: 9px;
+  }
+}
+
+
+/* ==========================================================
+   ✅ FULLSCREEN IMAGE MODAL
+========================================================== */
+.pv-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.pv-modal-img {
+  max-width: 95%;
+  max-height: 90%;
+  border-radius: 12px;
+  object-fit: contain;
+  touch-action: pan-y;
+  transition: 0.25s ease;
+}
+
+.pv-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+/* ✅ MOBILE MODAL IMAGE */
+@media (max-width: 600px) {
+  .pv-modal-img {
+    max-width: 100%;
+    max-height: 85%;
   }
 }

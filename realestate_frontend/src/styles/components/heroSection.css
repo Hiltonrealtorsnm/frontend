@@ -1,5 +1,5 @@
 /* =====================================================
-   HERO SECTION — FINAL FIXED VERSION (Category Visible)
+   HERO SECTION — FINAL LEFT-MIDDLE + INLINE SEARCH
 ===================================================== */
 
 .hero-section {
@@ -26,70 +26,117 @@
 }
 
 /* =====================================================
-   HERO TEXT + SEARCH BAR
+   HERO TEXT + SEARCH BAR (LEFT MIDDLE)
 ===================================================== */
+
 .hero-content {
   position: absolute;
-  left: 60px;
-  bottom: 150px;
+  left: 60px;                 
+  top: 30%;                   
+  transform: translateY(-50%);
   z-index: 5;
 
-  max-width: 600px;
+  max-width: 520px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+
   color: white;
   text-shadow: 0 4px 20px rgba(0,0,0,0.55);
 }
 
 .hero-content h1 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 800;
   line-height: 1.15;
 }
 
-/* Search bar */
+/* =====================================================
+   ✅ SEARCH BAR — ONE LINE (DESKTOP + MOBILE)
+===================================================== */
 .hero-search {
-  margin-top: 20px;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.hero-search input {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+.hero-search button {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  white-space: nowrap !important;
+}
+
+.hero-search {
+  margin-top: 16px;
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
 
-  width: 450px;
-  padding: 10px;
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
 
-  background: rgba(255,255,255,0.18);
-  border: 1.4px solid rgba(255,255,255,0.28);
-  border-radius: 14px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 16px;
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  flex-wrap: nowrap;  
 }
 
+
+
+/* ✅ INPUT */
 .hero-search input {
-  flex: 1;
-  padding: 12px 14px;
-
-  background: rgba(255,255,255,0.22);
-  border: 1px solid rgba(255,255,255,0.33);
-  border-radius: 10px;
-  color: #fff;
-
+  flex: 1 1;
+  min-width: 0;
+  padding: 10px 6px;
+  flex-direction: column;
+  background: transparent;
+  border: none;
   outline: none;
+
+  color: #fff;
+  font-size: 0.95rem;
 }
 
+.hero-search input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ✅ BUTTON — FIXED SELECTOR */
 .hero-search button {
-  padding: 12px 22px;
+  flex-shrink: 0; 
+  padding: 10px 18px;
+
   border-radius: 10px;
   border: none;
 
   background: linear-gradient(90deg, #11c78c, #18d3b0);
   color: white;
+
   font-weight: 700;
+  font-size: 0.9rem;
 
   cursor: pointer;
+  white-space: nowrap;
 }
 
 /* =====================================================
-   CATEGORY BAR (FLOATING FULLY VISIBLE)
+   CATEGORY BAR (FLOATING)
 ===================================================== */
 
 .hero-bottom-category {
@@ -102,30 +149,33 @@
 }
 
 .hero-bottom-category .category-bar {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* =====================================================
-   TABLET & MOBILE (768px)
+   TABLET & MOBILE (≤768px)
 ===================================================== */
 
 @media (max-width: 768px) {
+
   .hero-section {
     height: 380px;
   }
 
   .hero-content {
-    bottom: 160px;
-    left: 22px;
-    right: 22px;
+    left: 16px;
+    right: 16px;
+    top: 20%;
+    transform: translateY(-50%);
+    max-width: 100%;
   }
 
   .hero-content h1 {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
   }
 
   .hero-search {
-    width: 100%;
+    max-width: 100%;
   }
 
   .hero-bottom-category {
@@ -138,43 +188,30 @@
 }
 
 /* =====================================================
-   EXTRA SMALL MOBILE (300px - 360px)
+   EXTRA SMALL MOBILE (≤360px)
 ===================================================== */
 
-@media screen and (max-width: 360px) {
+@media (max-width: 360px) {
 
   .hero-section {
     height: 330px;
   }
-
-  .hero-content {
-    left: 14px;
-    right: 14px;
-    bottom: 140px;
+  .hero-content{
+    top: 30%;
   }
-
   .hero-content h1 {
     font-size: 1.45rem;
     line-height: 1.2;
   }
 
   .hero-search {
-    width: 100%;
-    flex-direction: column;
+    padding: 8px 10px;
     gap: 8px;
-    padding: 8px;
-  }
-
-  .hero-search input {
-    width: 100%;
-    font-size: 0.9rem;
-    padding: 10px;
   }
 
   .hero-search button {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
   .hero-bottom-category {
