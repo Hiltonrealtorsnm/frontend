@@ -143,6 +143,8 @@ export default function Properties() {
   /* -------------------------- UI -------------------------- */
   return (
     <div className="properties-page">
+
+      <h2 className="properties-title">Looking for? </h2>
       
       {/* ⭐ CATEGORY BAR FLOATS UNDER NAVBAR (LIKE HOME PAGE) */}
       <div className="properties-category-wrapper">

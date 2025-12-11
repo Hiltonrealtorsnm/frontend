@@ -77,7 +77,7 @@ export default function Navbar() {
                 alt="Hilton Realtors"
                 className="nav-logo-img"
               />
-              <span className="nav-logo-text">Hilton Realtors</span>
+              <span className="nav-logo-text">Hilton Realtors NM</span>
             </Link>
           </div>
 

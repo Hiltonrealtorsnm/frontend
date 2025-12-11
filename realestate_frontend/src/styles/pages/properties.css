@@ -19,6 +19,18 @@
   margin: 22px 0;
 }
 
+:root[color-theme="light"] {
+  --text-main: #1f2937;
+}
+
+
+:root[color-theme="dark"] {
+  --text-main: #f3f4f6;
+}
+.properties-title{
+  color: var(--text-main);
+}
+
 .properties-category-wrapper .category-bar {
   box-shadow: var(--shadow-sm);
 }
@@ -209,7 +221,7 @@
 /* =========================================================
    ✅ TRUE 320px MOBILE SUPPORT — PROPERTIES PAGE
 ========================================================= */
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
 
   /* ✅ Prevent horizontal scroll */
   html, body {
@@ -284,7 +296,7 @@
 /* =========================================================
    ✅ HARD FIX — 300px–360px TRUE MOBILE SUPPORT
 ========================================================= */
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
 
   /* ✅ Kill all horizontal scroll */
   html, body {

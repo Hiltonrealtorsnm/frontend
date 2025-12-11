@@ -1,4 +1,13 @@
 /* =======================================================
+   GLOBAL FIX (Prevents layout break on mobile)
+======================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =======================================================
    SELL PAGE — DARK + LIGHT THEME (Final Polished Version)
 ======================================================= */
 
@@ -57,25 +66,22 @@
 /* =======================================================
    PAGE WRAPPER (FULL-SCREEN BACKGROUND FIXED)
 ======================================================= */
-body[color-theme="dark"] {
-  background: var(--sell-bg) !important;
-}
+body[color-theme="dark"],
 body[color-theme="light"] {
   background: var(--sell-bg) !important;
 }
+
 .sell-wrapper {
   width: 100%;
   padding: calc(var(--nav-height) + 40px) 20px;
 
-  /* ⭐ background now adapts to light/dark theme */
   background-color: var(--sell-bg);
-
   color: var(--sell-text-main);
   font-family: "Inter", sans-serif;
   transition: 0.3s ease;
 }
 
-/* Center content only, not background */
+/* Center content only */
 .sell-container {
   max-width: 1150px;
   margin: auto;
@@ -86,11 +92,8 @@ body[color-theme="light"] {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 24px;
-
-  /* ⭐ dynamic text color */
   color: var(--sell-text-main);
 }
-
 
 /* =======================================================
    FORM CARD
@@ -106,6 +109,12 @@ body[color-theme="light"] {
   border: 1px solid var(--sell-border-soft);
 
   box-shadow: var(--sell-shadow);
+
+  /* ⭐ FIX FOR MOBILE LAYOUT BREAKING */
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  grid-auto-columns: minmax(0, 1fr);
 }
 
 .sell-col {
@@ -277,29 +286,26 @@ textarea {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
 /* ============================================
    ULTRA SMALL MOBILE (300px–360px)
 ============================================ */
-@media (max-width: 360px) {
+@media (max-width: 450px) {
 
-  /* Wrapper padding shrink */
   .sell-wrapper {
     padding: calc(var(--nav-height) + 20px) 10px;
   }
 
-  /* Title smaller */
   .sell-title {
     font-size: 1.4rem;
     text-align: center;
   }
 
-  /* Card compact */
   .sell-card {
     padding: 16px;
     gap: 20px;
   }
 
-  /* Labels smaller */
   .section-label {
     font-size: 0.95rem;
   }
@@ -308,7 +314,6 @@ textarea {
     font-size: 0.85rem;
   }
 
-  /* Inputs tighter */
   input,
   select,
   textarea {
@@ -320,7 +325,6 @@ textarea {
     min-height: 80px;
   }
 
-  /* Force all rows into single column */
   .form-row {
     flex-direction: column;
   }
@@ -329,7 +333,6 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  /* Image grid shrink */
   .image-grid {
     grid-template-columns: repeat(auto-fill, 70px);
     gap: 10px;
@@ -346,7 +349,6 @@ textarea {
     font-size: 10px;
   }
 
-  /* Submit button full width */
   .submit-row {
     grid-column: 1;
     justify-content: center;
@@ -359,9 +361,8 @@ textarea {
   }
 }
 
-
 /* =======================================================
-   RESPONSIVE
+   RESPONSIVE (TABLETS + MOBILE)
 ======================================================= */
 @media(max-width: 900px) {
   .sell-card {
